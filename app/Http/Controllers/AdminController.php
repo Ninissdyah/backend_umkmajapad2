@@ -14,7 +14,7 @@ class AdminController extends Controller
     {
         $id = auth()->guard('admin')->user()->vendorId;
         $users = Admin::where('vendorId', $id)->first();
-        $jumlahProduk = DB::table('products')->count();
+        $jumlahProduk = DB::table('vendors')->count();
         $jumlahBlog = DB::table('blogs')->count();
         return view('admins.dashboard', compact('users', 'jumlahProduk', 'jumlahBlog'));
     }

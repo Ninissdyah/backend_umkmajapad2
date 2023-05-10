@@ -15,15 +15,13 @@ use App\Http\Controllers\HomeController;
 */
 
 //Route Halaman Home
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::resource('home', 'App\Http\Controllers\HomeController');
 
 
 //Route Halaman Blog
 Route::resource('blog', 'App\Http\Controllers\BlogController');
-
+Route::get('/food&drink', [App\Http\Controllers\BlogController::class, 'food']);
 Route::get('/art', [App\Http\Controllers\BlogController::class, 'art']);
 Route::get('/bazar', [App\Http\Controllers\BlogController::class, 'bazar']);
 Route::get('/beauty', [App\Http\Controllers\BlogController::class, 'beauty']);
@@ -32,17 +30,17 @@ Route::get('/electronic', [App\Http\Controllers\BlogController::class, 'electron
 Route::get('/furniture', [App\Http\Controllers\BlogController::class, 'furniture']);
 Route::get('/webinar', [App\Http\Controllers\BlogController::class, 'webinar']);
 
+
+//Route Halaman Blog Detail
 Route::get('/blog-details/{id}', [App\Http\Controllers\BlogUMKMController::class, 'show']);
 
 Route::resource('product', 'App\Http\Controllers\ProductController');
 Route::resource('blogUMKM', 'App\Http\Controllers\BlogUMKMController');
 Route::resource('blogAdmin', 'App\Http\Controllers\BlogAdminController');
-//Route Halaman Blog Detail (Sementara)
-Route::get('/blog-detail', [App\Http\Controllers\BlogController::class, 'blogDetail']);
 
 
 //Route Halaman Store
-Route::resource('store', 'App\Http\Controllers\StoreController');
+Route::get('/stores', [App\Http\Controllers\StoreController::class, 'index'])->name('stores');
 
 Route::get('/art-store', [App\Http\Controllers\StoreController::class, 'art']);
 Route::get('/beauty-store', [App\Http\Controllers\StoreController::class, 'beauty']);
@@ -53,6 +51,14 @@ Route::get('/other', [App\Http\Controllers\StoreController::class, 'other']);
 
 //Route Halaman Store Detail (Sementara)
 Route::get('/store-detail', [App\Http\Controllers\StoreController::class, 'storeDetail']);
+Route::get('/food/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('/art/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('/Clothes/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('/furniture/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('/electronic/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('/beauty/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('/bazar/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('/webinar/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
 
 Route::resource('dashboard', 'App\Http\Controllers\DashboardUMKMController');
 
@@ -81,14 +87,16 @@ Route::get('/blogUMKM', [App\Http\Controllers\BlogUMKMController::class, 'index'
 
 Route::get('/myStore/create', [App\Http\Controllers\MyStoreController::class, 'create']);
 Route::post('/myStore/store', [App\Http\Controllers\MyStoreController::class, 'store'])->name('myStore.store');
-// Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create']);
-// Route::post('/product/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
-// Route::post('/product/destroy', [App\Http\Controllers\ProductController::class, 'store'])->name('product.destroy');
-// Route::get('/blogUMKM/create', [App\Http\Controllers\BlogUMKMController::class, 'create']);
-// Route::post('/blogUMKM/store', [App\Http\Controllers\BlogUMKMController::class, 'store'])->name('blogUMKM.store');
 
-Route::get('/dashboardAdmin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboardAdmin');
 Route::get('/storeAdmin', [App\Http\Controllers\StoreAdminController::class, 'index'])->name('storeAdmin');
+Route::get('/dashboardAdmin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboardAdmin');
+Route::get('/storeAdmin/food&drink', [App\Http\Controllers\StoreAdminController::class, 'food']);
+Route::get('/storeAdmin/art', [App\Http\Controllers\StoreAdminController::class, 'art']);
+Route::get('/storeAdmin/beauty&health', [App\Http\Controllers\StoreAdminController::class, 'beauty']);
+Route::get('/storeAdmin/clothes', [App\Http\Controllers\StoreAdminController::class, 'clothes']);
+Route::get('/storeAdmin/electronic', [App\Http\Controllers\StoreAdminController::class, 'electronic']);
+Route::get('/storeAdmin/furniture', [App\Http\Controllers\StoreAdminController::class, 'furniture']);
+Route::get('/storeAdmin/other', [App\Http\Controllers\StoreAdminController::class, 'other']);
 Route::get('/blogAdmin', [App\Http\Controllers\BlogAdminController::class, 'index'])->name('blogAdmin');
 
 Route::get('/food-store/{id}', [App\Http\Controllers\StoreController::class, 'storeDetail']);
@@ -99,11 +107,7 @@ Route::get('/electronic-store/{id}', [App\Http\Controllers\StoreController::clas
 Route::get('/beauty-store/{id}', [App\Http\Controllers\StoreController::class, 'storeDetail']);
 Route::get('/other-store/{id}', [App\Http\Controllers\StoreController::class, 'storeDetail']);
 
-Route::get('/food/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
-Route::get('/art/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
-Route::get('/clothes/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
-Route::get('/furniture/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
-Route::get('/electronic/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
-Route::get('/beauty/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
-Route::get('/bazar/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
-Route::get('/webinar/{id}', [App\Http\Controllers\BlogController::class, 'blogDetail']);
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

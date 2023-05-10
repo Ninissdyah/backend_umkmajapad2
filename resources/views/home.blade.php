@@ -14,27 +14,28 @@
     </div>
     <div class="container-home">
         <h2>BLOG</h2>
-        @if(count($galleries)>0)
-            @foreach ($galleries as $gal)
         <div class="box-container">
+        
+        @foreach ($blogs as $blog)
+            @if(count($blogs)>0)
             <div class="box">
-                <img class="image" alt="iniGambar" src="{{ asset ('storage/blogs/'.$gal->imagePath) }}">
+                <img class="image" alt="iniGambar" src="{{ asset ('storage/blogs/'.$blog->imagePath) }}">
             </div>
-        </div>
+            @else
+            <div class="box-container">
+                <div class="box">
+                    <img class="image" alt="iniGambar" src="https://www.pa4.com.br/wp-content/uploads/2021/08/WhatsApp-Image-2021-08-24-at-16.20.03.jpeg">
+                </div>
+                <div class="box">
+                    <img class="image" alt="iniGambar" src="https://bua.ub.ac.id/wp-content/uploads/2018/02/Banner-Pameran-Februari-6kali3-1024x512.jpg">
+                </div>
+                <div class="box">
+                    <img class="image" alt="iniGambar" src="http://www.umm.ac.id/files/image/Bazar%20Buku.jpg">
+                </div>
+            </div>
+            @endif
         @endforeach
-        @else
-        <div class="box-container">
-            <div class="box">
-                <img class="image" alt="iniGambar" src="https://www.pa4.com.br/wp-content/uploads/2021/08/WhatsApp-Image-2021-08-24-at-16.20.03.jpeg">
-            </div>
-            <div class="box">
-                <img class="image" alt="iniGambar" src="https://bua.ub.ac.id/wp-content/uploads/2018/02/Banner-Pameran-Februari-6kali3-1024x512.jpg">
-            </div>
-            <div class="box">
-                <img class="image" alt="iniGambar" src="http://www.umm.ac.id/files/image/Bazar%20Buku.jpg">
-            </div>
         </div>
-        @endif
         <div class="more">
             <a href="/blog" ><i class="fas fa-arrow-right fa-2x"></i></a>
         </div>
@@ -43,9 +44,12 @@
     <div class="container-home">
         <h2>STORE</h2>
         <div class="box-container">
+        @foreach ($store as $stores)
+            @if(count($store)>0)
             <div class="store-homepage box">
-                <img class="image" alt="iniGambar" src="https://s3.amazonaws.com/thumbnails.venngage.com/template/fc8535df-be09-4c80-8ea5-a69a34b2318e.png">
+                <img class="image" alt="iniGambar" src="{{ asset ('storage/dashboard/'.$stores->imagePath) }}">
             </div>
+            @else
             <div class="store-homepage box">
                 <img class="image" alt="iniGambar" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/store-logo-design-template-3ac57f780d1cae2a6d3a049f82c62437_screen.jpg?ts=1646205211">
             </div>
@@ -56,8 +60,11 @@
                 <img class="image" alt="iniGambar" src="https://www.logolynx.com/images/logolynx/55/5513135efd5feb51500074c68b2b32d5.jpeg">
             </div>
         </div>
+        @endif
+        @endforeach
+        
         <div class="more">
-            <a href="/store" ><i class="fas fa-arrow-right fa-2x"></i></a>
+            <a href="/stores" ><i class="fas fa-arrow-right fa-2x"></i></a>
         </div>
     </div>
 

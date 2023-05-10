@@ -13,7 +13,7 @@
                 <div class="list-head navbar-nav ">
                     <a class="nav-item" href="/">Home</a>
                     <a class="nav-item" href="/blog">Blog</a>
-                    <a class="nav-item" href="/store">Store</a>
+                    <a class="nav-item" href="/stores">Store</a>
                     <a class="nav-item" href="/aboutus">About Us</a>
                 </div>
                 <li class="nav-item dropdown">
@@ -41,7 +41,7 @@
                 <div class="list-head navbar-nav ">
                     <a class="nav-item" href="/">Home</a>
                     <a class="nav-item" href="/blog">Blog</a>
-                    <a class="nav-item" href="/store">Store</a>
+                    <a class="nav-item" href="/stores">Store</a>
                     <a class="nav-item" href="/aboutus">About Us</a>
                 </div>
                 <div class="navbar-nav ms-auto sign">

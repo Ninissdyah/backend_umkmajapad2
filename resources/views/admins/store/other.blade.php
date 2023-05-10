@@ -10,10 +10,10 @@
                 <option value="/storeAdmin/art">Art</option>
                 <option value="/storeAdmin/beauty&health" >Beauty&Health</option>
                 <option value="/storeAdmin/clothes">Clothes</option>
-                <option value="/storeAdmin/electronic" selected>Electronic</option>
+                <option value="/storeAdmin/electronic" >Electronic</option>
                 <option value="/storeAdmin/food&drink">Food&Drink</option>
                 <option value="/storeAdmin/furniture">Furniture</option>
-                <option value="/storeAdmin/other">Other</option>
+                <option value="/storeAdmin/other" selected>Other</option>
             </select>
             @error('category')
                 <div class="alert alert-danger">{{ $message }}</div>

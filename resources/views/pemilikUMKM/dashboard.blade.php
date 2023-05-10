@@ -1,6 +1,7 @@
 @extends('layoutsUMKM.app')
 
 @section('content')
+
 <section class="home-section plus-bottom1">
     <div class="text">I DASHBOARD</div>
     <div class="grid-dash">
@@ -24,6 +25,21 @@
                 </div>
             </div>
             @endforeach
+            @if(count($dashboard)==0)
+            <div class="content-profile">
+                <p class="sub-title">Store Name</p>
+                <div class="text-content">
+                    <p>Store Name</p>
+                </div>
+            </div>
+            <div class="content-profile">
+                <p class="sub-title">Category</p>
+                <div class="text-content">
+                    <p>Category</p>
+                </div>
+            </div>
+            @endif
+
             <div class="button-content">
                 <a href="/myStore"><i class='bx bx-right-arrow-alt'></i></a>
             </div>

@@ -20,6 +20,12 @@ class BlogController extends Controller
         return view('blogs.blog-food', compact('blogs'));
     }
 
+    public function food()
+    {
+        $blogs = Blogs::where('category', 'Food&Drink')->paginate(9);
+        return view('blogs.blog-food2', compact('blogs'));
+    }
+
     //Memanggil halaman blog kategori art
     public function art()
     {

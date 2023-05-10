@@ -35,13 +35,13 @@
                             <label>Category</label>
                             <select name="category" class="form-select form-control @error('category') is-invalid @enderror">
                             <option value="">Category</option>
-                                <option value="Art">Art</option>
-                                <option value="Beauty&Health">Beauty&Health</option>
-                                <option value="Clothes">Clothes</option>
-                                <option value="Electronic">Electronic</option>
-                                <option value="Food&Drink">Food&Drink</option>
-                                <option value="Webinar">Webinar</option>
-                                <option value="Bazar">Bazar</option>
+                                <option value="art">Art</option>
+                                <option value="beauty&health">Beauty&Health</option>
+                                <option value="clothes">Clothes</option>
+                                <option value="electronic">Electronic</option>
+                                <option value="food&drink">Food&Drink</option>
+                                <option value="webinar">Webinar</option>
+                                <option value="bazar">Bazar</option>
                             </select>
                             @error('category')
                                 <div class="alert alert-danger">{{ $message }}</div>

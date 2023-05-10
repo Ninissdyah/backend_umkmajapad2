@@ -21,7 +21,9 @@
     <div class="grid-dash">
         <div class="grid grid-image">
             <div class="profile">
-                <img class="img dash-profile img-profile" src="{{ asset ('storage/dashboard/'.$dashboard->imagePath) }}" alt="ini-gambar">
+                @foreach($dashboard as $dashboards)
+                <img class="img dash-profile img-profile" src="{{ asset ('storage/dashboard/'.$dashboards->imagePath) }}" alt="ini-gambar">
+                @endforeach
             </div>
             <div class="button-content">
                 <a href="/myStore/create"><i class='bx bx-pencil'></i></a>
@@ -45,38 +47,39 @@
             </div>
         </div>
         @endforeach
+        @foreach($dashboard as $dashboards)
         <div class="grid grid-store">
         <div class="text-in">Store Detail</div>
             <hr class="line-style">
             <div class="content-profile">
                 <p class="sub-title">Store Name</p>
                 <div class="text-content">
-                    <p>{{$dashboard->storeName}}</p>
+                    <p>{{$dashboards->storeName}}</p>
                 </div>
             </div>
             <div class="content-profile">
                 <p class="sub-title">Address</p>
                 <div class="text-content">
-                    <p>{{$dashboard->address}}</p>
+                    <p>{{$dashboards->address}}</p>
                 </div>
             </div>
             <div class="content-profile">
                 <p class="sub-title">Category</p>
                 <div class="text-content">
-                    <p>{{$dashboard->category}}</p>
+                    <p>{{$dashboards->category}}</p>
                 </div>
             </div>
             <div class="coloumn-detail">
                 <div class="content-profile">
                     <p class="sub-title">WhatsApp</p>
                     <div class="text-content">
-                        <p>{{$dashboard->wa}}</p>
+                        <p>{{$dashboards->wa}}</p>
                     </div>
                 </div>
                 <div class="content-profile">
                     <p class="sub-title">Instagram</p>
                     <div class="text-content">
-                        <p>{{$dashboard->ig}}</p>
+                        <p>{{$dashboards->ig}}</p>
                     </div>
                 </div>
             </div>
@@ -84,22 +87,88 @@
                 <div class="content-profile">
                     <p class="sub-title">Shopee</p>
                     <div class="text-content">
-                        <p>{{$dashboard->shopee}}</p>
+                        <p>{{$dashboards->shopee}}</p>
                     </div>
                 </div>
                 <div class="content-profile">
                     <p class="sub-title">Other</p>
                     <div class="text-content">
-                        <p>{{$dashboard->other}}</p>
+                        <p>{{$dashboards->other}}</p>
                     </div>
                 </div>
             </div>
             <div class="content-profile">
                 <p class="sub-title">Description</p>
                 <div class="text-content height">
-                    <p>{{$dashboard->desc}}</p>
+                    <p>{{$dashboards->desc}}</p>
                 </div>
             </div>
+            @endforeach
+            @if(count($dashboard)==0)
+            <div class="grid grid-image">
+                <div class="profile">
+                    <img class="img dash-profile img-profile" src="" alt="ini-gambar">
+                </div>
+                <div class="button-content">
+                    <a href="/myStore/create"><i class='bx bx-pencil'></i></a>
+                </div>
+            </div>
+            <div class="grid grid-store">
+            <div class="text-in">Store Detail</div>
+            <hr class="line-style">
+            <div class="content-profile">
+                <p class="sub-title">Store Name</p>
+                <div class="text-content">
+                    <p>StoreName</p>
+                </div>
+            </div>
+            <div class="content-profile">
+                <p class="sub-title">Address</p>
+                <div class="text-content">
+                    <p>Address</p>
+                </div>
+            </div>
+            <div class="content-profile">
+                <p class="sub-title">Category</p>
+                <div class="text-content">
+                    <p>Category</p>
+                </div>
+            </div>
+            <div class="coloumn-detail">
+                <div class="content-profile">
+                    <p class="sub-title">WhatsApp</p>
+                    <div class="text-content">
+                        <p>Wa</p>
+                    </div>
+                </div>
+                <div class="content-profile">
+                    <p class="sub-title">Instagram</p>
+                    <div class="text-content">
+                        <p>Instagram</p>
+                    </div>
+                </div>
+            </div>
+            <div class="coloumn-detail">
+                <div class="content-profile">
+                    <p class="sub-title">Shopee</p>
+                    <div class="text-content">
+                        <p>Shopee</p>
+                    </div>
+                </div>
+                <div class="content-profile">
+                    <p class="sub-title">Other</p>
+                    <div class="text-content">
+                        <p>Other</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-profile">
+                <p class="sub-title">Description</p>
+                <div class="text-content height">
+                    <p>Description</p>
+                </div>
+            </div>
+            @endif
             <div class="button-content">
                 <a href="/myStore/create"><i class='bx bx-pencil'></i></a>
             </div>

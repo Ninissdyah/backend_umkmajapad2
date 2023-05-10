@@ -47,6 +47,6 @@
             This book is a treatise on the theory of ethics, very popular during the Renaissance. 
             The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p> -->
     </div>
-    <a href="{{ url()->previous() }}"><button class="btn">{{$blogs->category}}</button></a>
+    <a href="/{{$blogs->category}}"><button class="btn">{{$blogs->category}}</button></a>
 </section>
 @endsection

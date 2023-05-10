@@ -15,7 +15,7 @@ class MyStoreController extends Controller
     public function index()
     {
         $id = auth()->guard('admin')->user()->vendorId;
-        $dashboard = Dashboard::where('vendorId', $id)->first();
+        $dashboard = Dashboard::where('vendorId', $id)->get();
         $users = User::where('id', $id)->get();
         return view('pemilikUMKM.my-store', compact('dashboard', 'users'));
     }

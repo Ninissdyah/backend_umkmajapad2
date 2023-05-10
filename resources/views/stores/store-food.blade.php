@@ -32,7 +32,7 @@
                 <i class="fas fa-angle-down"></i>
             </div></a>
             <hr>
-            <a href="/store" class="active">
+            <a href="/stores" class="active">
             <div class="store-cat">
                 <p>Food&Drink</p>
                 <i class="fas fa-angle-down"></i>

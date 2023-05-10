@@ -29,7 +29,7 @@
                 <p>Lorem ipsum dolor sit amet 
                     consectetur, adipisicing elit.</p>
                 <div class="blog-readmore">
-                    <a href="/blog-detail">Read More</a>
+                    <a href="/beauty/{{$blog->id}}">Read More</a>
                     <i class="fas fa-angle-right"></i>
                 </div>
             </div>

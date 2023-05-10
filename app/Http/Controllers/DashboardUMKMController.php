@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Blogs;
 use App\Models\Dashboard;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Image;
@@ -14,15 +17,15 @@ class DashboardUMKMController extends Controller
     {
         $id = auth()->guard('admin')->user()->vendorId;
         $dashboard = Dashboard::where('vendorId', $id)->get();
-        $jumlahProduk = DB::table('products')->count();
-        $jumlahBlog = DB::table('blogs')->count();
+        $jumlahProduk = Product::where('vendorId', $id)->count();
+        $jumlahBlog = Blogs::where('vendorId', $id)->count();
         return view('pemilikUMKM.dashboard', compact('dashboard', 'jumlahProduk', 'jumlahBlog'));
     }
 
     public function create()
     {
         $dashboard = Dashboard::all();
-        return view('dashboard.create', ['dashboard' => $dashboard]);
+        return view('form-input.form-store-detail', ['dashboard' => $dashboard]);
     }
 
     public function store(Request $request)
