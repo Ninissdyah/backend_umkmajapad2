@@ -33,8 +33,10 @@
        </a>
        <span class="tooltip">Blog</span>
      </li>
+     <a href="{{ url('/logout') }}">
      <li class="button-side">
-        <a class="btn btn-logout" href="{{ url('/logout') }}"><button class="btn btn-logout">LOGOUT</button></a>
+        <button class="btn btn-logout">LOGOUT</button>
      </li>
+     </a>
     </ul>
 </div>

@@ -53,7 +53,7 @@
                         <textarea name="content" class="form-control @error('content') is-invalid @enderror"></textarea>
                             @error('content')
                                 <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror  
+                            @enderror  
                     </div>
                     <div class="button-content">
                         <button type="submit" class="btn-form btn">Post</button>

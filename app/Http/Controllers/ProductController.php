@@ -13,14 +13,11 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $idx = auth()->guard('admin')->user()->vendorId;
-        $dashboard = Dashboard::where('vendorId', $idx)->get()->toArray();
-        $id = $dashboard[0]['id'];
-        $dashboardx = Dashboard::find($id)->toArray();
-        $vendorId = $dashboardx['vendorId'];
-        $product = Product::where('vendorId', $vendorId)->paginate(12);
+        $id = auth()->guard('admin')->user()->vendorId;
+        $dashboard = Dashboard::where('vendorId', $id)->get();
+        $product = Product::where('vendorId', $id)->paginate(12);
         $no = 1;
-        return view('pemilikUMKM.product', compact('product'), compact('no'));
+        return view('pemilikUMKM.product', compact('product','dashboard'), compact('no'));
     }
 
     public function create()

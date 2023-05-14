@@ -8,10 +8,10 @@
         <div class="grid grid-profile">
             <div class="text-in">PROFILE</div>
             <hr class="line-style">
-            <div class="profile">
-                <img class="img dash-profile img-profile" src="https://i.etsystatic.com/39180577/r/il/943566/4432680343/il_fullxfull.4432680343_9tjj.jpg" alt="ini-gambar">
-            </div>
             @foreach($dashboard as $dashboards)
+            <div class="profile">
+                <img class="img dash-profile img-profile" src="{{ asset ('storage/dashboard/'.$dashboards->imagePath) }}" alt="ini-gambar">
+            </div>
             <div class="content-profile">
                 <p class="sub-title">Store Name</p>
                 <div class="text-content">

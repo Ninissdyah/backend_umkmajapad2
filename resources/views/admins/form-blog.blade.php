@@ -40,6 +40,7 @@
                                 <option value="clothes">Clothes</option>
                                 <option value="electronic">Electronic</option>
                                 <option value="food&drink">Food&Drink</option>
+                                <option value="furniture">Food&Drink</option>
                                 <option value="webinar">Webinar</option>
                                 <option value="bazar">Bazar</option>
                             </select>

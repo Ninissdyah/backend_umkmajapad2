@@ -34,6 +34,7 @@
             <h3>Send Your Message!</h3>
                 <div class="box-send">
                     <form class="input-group">
+                    {{ csrf_field() }}
                         <input type="text" class="form-control form-control-sm" aria-describedby="basic-addon2" fdprocessedid="bidmgj">
                     </form>
                     <button class="btn-send" type="button">Send</button>

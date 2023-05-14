@@ -65,4 +65,13 @@ class StoreAdminController extends Controller
         $data = Dashboard::where('category', 'Other')->get();
         return view('admins.store.other', compact('data'));
     }
+
+    public function show($id)
+    {
+        $data = array(
+            'id' => "dashboards",
+            'dashboards' => Dashboard::find($id)
+        );
+        return view('stores.store-details.store-detail')->with($data);
+    }
 }

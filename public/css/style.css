@@ -705,6 +705,10 @@ width: 85rem;
     margin-left: 0.5rem;
 }
 
+.desc-product{
+  margin-left: 0.5rem;
+}
+
 /* End Store  */
 
 
@@ -1127,7 +1131,6 @@ width: 85rem;
     display: flex;
     padding: 1rem 2rem;
     justify-content: end;
-    margin-top: 3rem;
   }
 
 

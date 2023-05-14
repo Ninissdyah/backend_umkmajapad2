@@ -17,7 +17,7 @@
                 <form action= "{{ route('product.destroy', $pro->id)}}" method="POST">@method('DELETE')
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$pro->id }}"> <br></br>
-                    <button type="submit" onclick="return confirm('Are You Sure You Want To Remove This Product?');" style="margin-bottom:5rem;"><i class='bx bx-trash'></i></button>
+                    <button type="submit" onclick="return confirm('Are You Sure You Want To Remove This Product?');"><i class='bx bx-trash'></i></button>
                 </form>
             </div>
         </div>

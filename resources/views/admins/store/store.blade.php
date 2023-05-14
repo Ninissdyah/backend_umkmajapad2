@@ -37,7 +37,7 @@
                 <td>{{$store->updated_at}}</td>
                 <td class="action">
                     <div class="action-flex">
-                    <a href="/storeAdmin"><i class='bx bx-right-arrow-circle'></i></a>
+                    <a href="/store-details/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
                     </div>
                 </td>
             </tr>

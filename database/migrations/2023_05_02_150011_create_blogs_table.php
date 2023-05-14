@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('imagePath');
             $table->string('contentTitle', 100);
             $table->string('author');
-            $table->enum('category', ['', 'Art', 'Beauty&Health', 'Clothes', 'Electronic', 'Food&Drink', 'Furniture', 'Others']);
+            $table->enum('category', ['', 'art', 'beauty&health', 'clothes', 'electronic', 'food&drink', 'furniture', 'webinar', 'bazar']);
             $table->string('content');
             $table->timestamps();
         });

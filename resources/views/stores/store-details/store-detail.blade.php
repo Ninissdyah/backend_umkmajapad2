@@ -30,7 +30,7 @@
     <div class="product-store">
         <h2>PRODUCT</h2>
         <div class="box-container">
-        @if(count($product)>0)
+        @if(!empty($product))
             @foreach($product as $products)
             <div id="myBtn" class="store-card card">
                 <div id="myModal" class="modal">
