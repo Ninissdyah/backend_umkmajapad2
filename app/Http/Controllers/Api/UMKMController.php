@@ -1,29 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Admin;
+
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
 use App\Models\Blogs;
+use App\Models\Dashboard;
 use Image;
 use Auth;
 use Illuminate\Support\Facades\File;
 
-use Illuminate\Http\Request;
-
-class BlogAdminController extends Controller
+class UMKMController extends Controller
 {
-    public function index()
-    {
-        $blogs = Blogs::all();
-        return view('admins.blog', compact('blogs'));
-    }
-
-    public function create()
-    {
-        $blogs = Blogs::all();
-        return view('admins.form-blog', ['blogs' => $blogs]);
-    }
-
-    public function store(Request $request)
+    public function createBlog(Request $request)
     {
         $messages = [
             'contentTitle.required'    => 'Title Content is required!',
@@ -60,36 +51,16 @@ class BlogAdminController extends Controller
             $imageName = $filenameUnik . '_' . time() . '.' . $extension; 
             Image::make($request->file('imagePath'))->resize(500, 700, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save('storage/blogs/'.'/'.$imageName);
+            })->save('storage/blogs/'.$imageName);
             $blogs->imagePath = $imageName;
         } 
 
         $blogs->save();
-        return redirect('/blogAdmin')->with(['success' => 'Article uploaded successfully']);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $data = array(
-            'id' => "blogs",
-            'blogs' => Blogs::find($id)
-        );
-        return view('admins.blog')->with($data);
-    }
-
-    public function destroy($id)
-    {
-        $blogs = Blogs::find($id);
-        $image = Blogs::findOrFail($id);
-        $destination = 'storage/blogsAdmin/'.$blogs->imagePath;
-        File::delete($destination);
-        $blogs->delete();
-        return redirect('/blogAdmin')->with(['berhasil' => 'Event deleted successfully']);
+        if (!$blogs){
+            return response()->json("Error Saving", 500);
+        } else{
+            return response()->json($blogs, 201);
+        }
+        return redirect('/blogUMKM')->with(['success' => 'Content uploaded successfully']);
     }
 }

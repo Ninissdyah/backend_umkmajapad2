@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+    
+use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Blogs;
-use App\Models\Dashboard;
 use Image;
 use Auth;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 
-class BlogUMKMController extends Controller
+class BlogAdminController extends Controller
 {
     public function index()
     {
-        $id = auth()->guard('admin')->user()->vendorId;
-        $blogs = Blogs::where('vendorId', $id)->paginate(12);
-        $dashboard = Dashboard::where('vendorId', $id)->get();
-        return view('pemilikUMKM.blog', compact('blogs', 'dashboard'));
+        $blogs = Blogs::all();
+        return response()->json($blogs, 200);
+        return view('admins.blog', compact('blogs'));
     }
 
     public function create()
     {
         $blogs = Blogs::all();
-        return view('form-input.form-blog', ['blogs' => $blogs]);
+        return view('admins.form-blog', ['blogs' => $blogs]);
     }
 
     public function store(Request $request)
@@ -48,7 +49,10 @@ class BlogUMKMController extends Controller
         ],$messages);
 
         $blogs = new Blogs;
+        
         $blogs->vendorId = Auth::guard('admin')->user()->vendorId;
+
+
         $blogs->contentTitle = $request->input('contentTitle');
         $blogs->content = $request->input('content');
         $blogs->author = $request->input('author');
@@ -62,12 +66,17 @@ class BlogUMKMController extends Controller
             $imageName = $filenameUnik . '_' . time() . '.' . $extension; 
             Image::make($request->file('imagePath'))->resize(500, 700, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save('storage/blogs/'.'/'.$imageName);
+            })->save('storage/blogs/'.$imageName);
             $blogs->imagePath = $imageName;
         } 
 
         $blogs->save();
-        return redirect('/blogUMKM')->with(['success' => 'Article uploaded successfully']);
+        if (!$blogs){
+            return response()->json("Error Saving", 500);
+        } else{
+            return response()->json($blogs, 201);
+        }
+        return redirect('/blogAdmin')->with(['success' => 'Content uploaded successfully']);
     }
 
     /**
@@ -82,15 +91,26 @@ class BlogUMKMController extends Controller
             'id' => "blogs",
             'blogs' => Blogs::find($id)
         );
-        return view('blogs.blog-details.blog-detail')->with($data);
+
+        if(is_null($data)){
+            return response()->json("not found", 404);
+        }else{
+            return response()->json($data, 200);
+        }
+        
     }
 
     public function destroy($id)
     {
         $blogs = Blogs::find($id);
-        $destination = 'storage/blogs/'.$blogs->imagePath;
+        $destination = 'storage/blogsAdmin/'.$blogs->imagePath;
         File::delete($destination);
         $blogs->delete();
-        return redirect('/blogUMKM')->with(['berhasil' => 'Event deleted successfully']);
+        if(!$blogs){
+            return response()->json("Error deleting", 500);
+        }else{
+            return response()->json("Delete Success", 200);
+        }
+        return redirect('/blogAdmin')->with(['berhasil' => 'Content deleted successfully']);
     }
 }

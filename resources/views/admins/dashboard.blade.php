@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="home-section plus-bottom1">
-    <div class="text">I DASHBOARD</div>
+    <div class="text">DASHBOARD</div>
     <div class="grid-dash">
         <div class="grid grid-profile">
             <div class="text-in">PROFILE</div>
@@ -23,12 +23,12 @@
                 </div>
             </div>
             <div class="content-profile">
-                <p class="sub-title">Password</p>
-                <div class="text-content">
-                    <p>{{$users->password}}</p>
-                </div>
-            </div>
+                <p class="sub-title">Reset Your Password</p>
+                    <div>
+                        <a href="/password/reset/"><button type="button" class="btn-form btn">Reset Password</button></a>
+                    </div>
             <br>
+            </div>
         </div>
         <div class="grid grid-product">
             <div class="text-in">STORE</div>

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Admin;
@@ -13,8 +14,8 @@ class AdminController extends Controller
     public function index()
     {
         $id = auth()->guard('admin')->user()->vendorId;
-        $users = Admin::where('vendorId', $id)->first();
-        $jumlahProduk = DB::table('vendors')->count();
+        $users = User::where('vendorId', $id)->first();
+        $jumlahProduk = DB::table('dashboards')->count();
         $jumlahBlog = DB::table('blogs')->count();
         return view('admins.dashboard', compact('users', 'jumlahProduk', 'jumlahBlog'));
     }

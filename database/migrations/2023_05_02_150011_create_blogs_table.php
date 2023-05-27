@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('contentTitle', 100);
             $table->string('author');
             $table->enum('category', ['', 'art', 'beauty&health', 'clothes', 'electronic', 'food&drink', 'furniture', 'webinar', 'bazar']);
-            $table->string('content');
+            $table->string('content', 5000);
             $table->timestamps();
         });
     }

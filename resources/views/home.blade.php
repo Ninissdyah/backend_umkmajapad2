@@ -24,16 +24,18 @@
             @endforeach
         @endif
         @if(count($blogs)==0)
-                <div class="box">
-                    <img class="image" alt="iniGambar" src="https://www.pa4.com.br/wp-content/uploads/2021/08/WhatsApp-Image-2021-08-24-at-16.20.03.jpeg">
+                <div class="store-homepage box">
+                    <img class="image" alt="iniGambar" src="{{ asset('/storage/blogs.jpg')}}">
                 </div>
-                <div class="box">
-                    <img class="image" alt="iniGambar" src="https://bua.ub.ac.id/wp-content/uploads/2018/02/Banner-Pameran-Februari-6kali3-1024x512.jpg">
+                <div class="store-homepage box">
+                    <img class="image" alt="iniGambar" src="{{ asset('/storage/blogs.jpg')}}">
                 </div>
-                <div class="box">
-                    <img class="image" alt="iniGambar" src="http://www.umm.ac.id/files/image/Bazar%20Buku.jpg">
+                <div class="store-homepage box">
+                    <img class="image" alt="iniGambar" src="{{ asset('/storage/blogs.jpg')}}">
                 </div>
-            </div>
+                <div class="store-homepage box">
+                    <img class="image" alt="iniGambar" src="{{ asset('/storage/blogs.jpg')}}">
+                </div>
         @endif
         </div>
         <div class="more">
@@ -53,13 +55,16 @@
         @endif
         @if(count($store)==0)
             <div class="store-homepage box">
-                <img class="image" alt="iniGambar" src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/store-logo-design-template-3ac57f780d1cae2a6d3a049f82c62437_screen.jpg?ts=1646205211">
+                <img class="image" alt="iniGambar" src="{{ asset('/storage/store.jpg')}}">
             </div>
             <div class="store-homepage box">
-                <img class="image" alt="iniGambar" src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30142254/125-768x591.png">
+                <img class="image" alt="iniGambar" src="{{ asset('/storage/store.jpg')}}">
             </div>
             <div class="store-homepage box">
-                <img class="image" alt="iniGambar" src="https://www.logolynx.com/images/logolynx/55/5513135efd5feb51500074c68b2b32d5.jpeg">
+                <img class="image" alt="iniGambar" src="{{ asset('/storage/store.jpg')}}">
+            </div>
+            <div class="store-homepage box">
+                <img class="image" alt="iniGambar" src="{{ asset('/storage/store.jpg')}}">
             </div>
         @endif
         </div>
@@ -81,7 +86,7 @@
         </div> 
     </div>
 
-    <div class="container-home">
+    <div class="box-contain container-home">
         <div class="box-container">
             <div class="banner box lft">
                 <h2 class="mark-container mark">Want to join UMKMAja?</h2>

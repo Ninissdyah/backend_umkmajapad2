@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->integer('vendorId');
+            $table->bigInteger('vendorId')->references('id')->on('users');
         });
     }
 

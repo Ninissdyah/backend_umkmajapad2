@@ -16,12 +16,17 @@
                     <a class="nav-item" href="/stores">Store</a>
                     <a class="nav-item" href="/aboutus">About Us</a>
                 </div>
-                <li class="nav-item dropdown">
-                <button type="button" class="dropdown-toggle" data-toggle="dropdown">
+                <li class="navbar-nav ms-auto dropdown sign">
+                <button type="button" class="nav-item dropdown-toggle" data-toggle="dropdown">
                     {{Auth::guard('admin')->user()->name}}
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 18rem;">
-                    <li><a class="dropdown-item" href="{{ url('/logout') }}" style="width: 80%;">Logout</a></li>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @if((Auth::guard('admin')->user()->vendorId)==0)
+                    <li><a class="dropdown-item" href="{{ url('/dashboardAdmin') }}">Dashboard</a></li>
+                    @else
+                    <li><a class="dropdown-item" href="{{ url('/dashboardUMKM') }}">Dashboard</a></li>
+                    @endif
+                    <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
                 </ul>
             </li>
             </div>

@@ -3,14 +3,14 @@
 @section('content')
 
 <section class="home-section plus-bottom1">
-    <div class="text">I DASHBOARD</div>
+    <div class="text">DASHBOARD</div>
     <div class="grid-dash">
         <div class="grid grid-profile">
             <div class="text-in">PROFILE</div>
             <hr class="line-style">
             @foreach($dashboard as $dashboards)
             <div class="profile">
-                <img class="img dash-profile img-profile" src="{{ asset ('storage/dashboard/'.$dashboards->imagePath) }}" alt="ini-gambar">
+                <img class="img dash-profile img-profile" src="{{ asset ('storage/dashboard/'.$dashboards->imagePath) }}" alt="ini-gambar">    
             </div>
             <div class="content-profile">
                 <p class="sub-title">Store Name</p>

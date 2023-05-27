@@ -9,15 +9,12 @@
         <p>{{$blogs->author}}</p>
     </div>
 
-    <div id="myBtn" class="banner-blog">
-        <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close"></span>
-                <img class="img-modal" src="{{asset('storage/blogs/'. $blogs->imagePath)}}" alt="iniGambar">
-            </div>
-        </div>
-        <img class="img-blog" src="{{asset('storage/blogs/'. $blogs->imagePath)}}">
+    <div class="banner-blog">
+        <a class="example-image-link" href="{{asset('storage/blogs/'. $blogs->imagePath)}}"
+            data-lightbox="example-2" data-title="{{$blogs->contentTitle}}">
+                <img class="img-blog example-image img-fluid mb-2"
+                src="{{asset('storage/blogs/'. $blogs->imagePath)}}" alt="image-1">
+        </a>
     </div>
 
     <div class="contain-blog">

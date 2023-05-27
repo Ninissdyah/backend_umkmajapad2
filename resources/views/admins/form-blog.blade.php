@@ -1,4 +1,4 @@
-@extends('layoutsUMKM.app')
+@extends('layouts-admin.app')
 
 @section('content')
 <section class="home-section plus-bottom1">
@@ -40,7 +40,7 @@
                                 <option value="clothes">Clothes</option>
                                 <option value="electronic">Electronic</option>
                                 <option value="food&drink">Food&Drink</option>
-                                <option value="furniture">Food&Drink</option>
+                                <option value="furniture">Furniture</option>
                                 <option value="webinar">Webinar</option>
                                 <option value="bazar">Bazar</option>
                             </select>

@@ -15,8 +15,8 @@
         <a href="/furniture">Furniture</a>
         <a href="/webinar">Webinar</a>
     </div>
-    <br><br><br>
-    <div class="container-home">
+    <br><br><br> 
+    <div class="container-home blogs">
         <div class="box-container">
         @if(count($blogs)>0)
             @foreach($blogs as $blog) 
@@ -35,12 +35,18 @@
             </div>
             @endforeach 
         @else
-            <div class="store-box2">
-                <div class="alert alert-success alert-block">
-                    <h3>Artikel tidak tersedia</h3>
+        </div>
+            <div class="store-box3 widht-full">
+                <div class="alert alert-block">
+                    <h3>Content not available yet</h3>
                 </div>
             </div>
         @endif
+        </div>
+        <div class="container text-center">
+            <div class="d-flex justify-content-center" >
+                {{ $blogs->links() }}
+            </div>
         </div>
     </div> 
 </section>

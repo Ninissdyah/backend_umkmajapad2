@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dashboard;
 use App\Models\Product;
@@ -17,7 +18,7 @@ class StoreController extends Controller
     //Memanggil halaman store category food&drink
     public function index()
     {
-        $dashboard = Dashboard::where('category', 'Food&Drink')->paginate(9);
+        $dashboard = Dashboard::where('category', 'Food&Drink')->orderBy('storeName', 'asc')->paginate(6);
         return view('stores.store-food', compact('dashboard'));
 
     }
@@ -25,42 +26,42 @@ class StoreController extends Controller
     //Memanggil halaman store category art
     public function art()
     {
-        $dashboard = Dashboard::where('category', 'Art')->paginate(9);
+        $dashboard = Dashboard::where('category', 'Art')->orderBy('storeName', 'asc')->paginate(6);
         return view('stores.store-art', compact('dashboard'));
     }
 
     //Memanggil halaman store category beauty&health
     public function beauty()
     {
-        $dashboard = Dashboard::where('category', 'Beauty&Health')->paginate(9);
+        $dashboard = Dashboard::where('category', 'Beauty&Health')->orderBy('storeName', 'asc')->paginate(6);
         return view('stores.store-beauty&health', compact('dashboard'));
     }
 
     //Memanggil halaman store category clothes
     public function clothes()
     {
-        $dashboard = Dashboard::where('category', 'Clothes')->paginate(9);
+        $dashboard = Dashboard::where('category', 'Clothes')->orderBy('storeName', 'asc')->paginate(6);
         return view('stores.store-clothes', compact('dashboard'));
     }
 
     //Memanggil halaman store category electronic
     public function electronic()
     {
-        $dashboard = Dashboard::where('category', 'Electronic')->paginate(9);
+        $dashboard = Dashboard::where('category', 'Electronic')->orderBy('storeName', 'asc')->paginate(6);
         return view('stores.store-electronic', compact('dashboard'));
     }
 
     //Memanggil halaman store category furniture
     public function furniture()
     {
-        $dashboard = Dashboard::where('category', 'Furniture')->paginate(9);
+        $dashboard = Dashboard::where('category', 'Furniture')->orderBy('storeName', 'asc')->paginate(6);
         return view('stores.store-furniture', compact('dashboard'));
     }
 
     //Memanggil halaman store category others
     public function other()
     {
-        $dashboard = Dashboard::where('category', 'Other')->paginate(9);
+        $dashboard = Dashboard::where('category', 'Other')->orderBy('storeName', 'asc')->paginate(6);
         return view('stores.store-other', compact('dashboard'));
     }
 

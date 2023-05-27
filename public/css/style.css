@@ -122,7 +122,7 @@ img {
 }
 
 .box{
-    border: var(--border);
+    border: none;
     width: 390px;
     height: 290px;
     border-radius: 15px;
@@ -137,6 +137,7 @@ img {
 .plus-bottom2{
     margin-bottom: 13rem;
 }
+
 /* End All */
 
 
@@ -221,12 +222,12 @@ img {
     font-weight: bold;
     font-size: 1.1rem;
     line-height: 42px;
-    color: var(--black);
+    color: var(--white);
     text-decoration: none;
 }
 
 .header .list-head a:hover{
-    color: var(--white);
+    color: var(--black);
     text-decoration: none;
 }
 
@@ -243,6 +244,19 @@ img {
     color: var(--footer-color);
     text-decoration: none;
 }
+
+.dropdown-toggle{
+  background: none;
+  color: var(--white);
+  font-weight: bold;
+}
+
+.dropdown-item{
+  color: var(--black) !important;
+  margin-left: 0px !important;
+  font-size: 1rem !important;
+}
+
 /* End Header */
 
 /* Homepage */
@@ -267,7 +281,7 @@ height: 700px;
 .about-us{
     display: flex;
     height: 600px !important;
-    background: url(../storage/about\ slider.jpg) !important;
+    background: url(../storage/slide.jpg) !important;
     margin-top: 3rem;
     padding: 0 5rem !important;
 }
@@ -343,10 +357,10 @@ width: 85rem;
 .box-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:flex-start;
     padding: 10px;
     gap: 5rem;
-    margin-top: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .store-homepage{
@@ -471,6 +485,10 @@ width: 85rem;
     font-weight: bolder;
 }
 
+.blog .box-container{
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
 .box-blog{
     width: 300px;
@@ -514,12 +532,8 @@ width: 85rem;
 
 .info-blog{
     display: grid;
-    grid-template-columns: 5% 5% 5%;
-    gap: 5px;
-}
-
-.info-blog i{
-    margin-top: 1.5rem;
+    grid-template-columns: 7% 2% 20%;
+    gap: 1px;
 }
 
 .banner-blog{
@@ -536,6 +550,7 @@ width: 85rem;
     width: 100%;
     object-fit: scale-down;
     border-radius: 15px;
+    max-height: 100%;
 }
 
 .contain-blog p{
@@ -549,9 +564,9 @@ width: 85rem;
 
 /* About Us */
 
-.aboutus{
+/* .aboutus{
     padding: 5rem 0 !important;
-}
+} */
 
 .box-aboutus{
     display: grid;
@@ -561,7 +576,7 @@ width: 85rem;
 }
 
 .box-aboutus .image{
-    object-fit: contain !important;
+    object-fit: fill !important;
 }
 
 .box-left{
@@ -577,7 +592,7 @@ width: 85rem;
 
 .aboutus p{
     text-align: justify;
-    padding: 5rem;
+    padding: 3rem 5rem;
 }
 
 /* End About Us  */
@@ -603,6 +618,10 @@ width: 85rem;
 
 .store-box2{
     padding-right: 3rem;
+}
+
+.store-box3{
+  padding-right: 3rem;
 }
 
 .store-box2 .box-container{
@@ -707,6 +726,15 @@ width: 85rem;
 
 .desc-product{
   margin-left: 0.5rem;
+}
+
+.store-page .box-container{
+  flex-wrap: wrap;
+}
+
+.product-store .box-container{
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 /* End Store  */
@@ -956,7 +984,7 @@ width: 85rem;
   
   .sidebar li a{
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     height: 100%;
     width: 100%;
     border-radius: 10px;
@@ -984,9 +1012,13 @@ width: 85rem;
   }
 
   .sidebar li a .links_name.store{
-    font-size: 1.2rem;
-    color: var(--black);
+    font-size: 1rem;
+    color: var(--white);
     font-weight: bold;
+  }
+
+  .sidebar li a .links_name.store:hover{
+    color: var(--black);
   }
 
   .sidebar li a:hover .links_name,
@@ -1065,7 +1097,19 @@ width: 85rem;
     color: var(--black);
     font-size: 2rem;
     font-weight: bolder;
-    margin: 18px;
+    margin: 18px 18px 18px 28px;
+  }
+
+  .home-section .admin{
+    margin: 18px 18px 18px 15px !important;
+  }
+
+  .home-section .storez{
+    margin: 18px 18px 18px 0px !important;
+  }
+
+  .home-section .product{
+    margin: 18px 18px 18px 12px !important;
   }
 
   .home-section .text-in{
@@ -1095,7 +1139,7 @@ width: 85rem;
   }
 
   .home-section .grid-dash .grid-profile{
-    grid-column: 1/2;
+    grid-column: 1/3;
     grid-row: 1/5;
   }
 
@@ -1121,7 +1165,7 @@ width: 85rem;
 
   .content-profile .text-content{
     border: var(--border);
-    max-height: 35px;
+    height: 35px;
     border-radius: 5px;
     padding: 3px 6px
   }
@@ -1129,13 +1173,14 @@ width: 85rem;
   .button-content{
     font-size: 1.5rem;
     display: flex;
-    padding: 1rem 2rem;
     justify-content: end;
+    margin-top: 2rem;
+    margin-right: 2rem;
   }
 
 
   .home-section .grid-dash .grid-product{
-    grid-column: 2/3;
+    grid-column: 3/5;
     grid-row: 1/3;
   }
 
@@ -1158,31 +1203,32 @@ width: 85rem;
   
 
   .home-section .grid-dash .grid-blog{
-    grid-column: 2/3;
+    grid-column: 3/5;
     grid-row: 3/5;
   }
 /* End Dashboard */
 
 /* My Store Pemilik UMKM*/
 .home-section .grid-dash .grid-image{
-    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/3;
     grid-row: 1/2;
   }
 
   .home-section .grid-dash .grid-image .profile{
-    display: flex;
-    justify-content: center;
     margin: 1.5rem;
   }
 
   .home-section .grid-dash .grid-account{
-    grid-column: 1/2;
+    grid-column: 1/3;
     grid-row: 2/5;
   }
 
 
   .home-section .grid-dash .grid-store{
-    grid-column: 2/3;
+    grid-column: 3/5;
     grid-row: 1/5;
   }
 
@@ -1199,7 +1245,7 @@ width: 85rem;
   }
 
   .text-content.height{
-    min-height: 60px;
+    min-height: 250px;
   }
 
 /* End My Store */
@@ -1216,6 +1262,12 @@ width: 85rem;
 
 .home-section .harga-product{
     margin-bottom: 0 !important;
+}
+
+.button-content2{
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: end;
 }
 /* End Product UMKM */
 
@@ -1310,15 +1362,26 @@ table {
 }
 
 .height2{
-    height: 520px !important;
+    height: 620px !important;
 }
 
 .height3{
-    height: 650px !important;
+    height: 730px !important;
+}
+
+.height4{
+  height:max-content !important;
+  padding-bottom: 1rem !important;
 }
 
 .formsbox{
     padding: 0.8rem 5rem;
+}
+
+.form-group2{
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 .box-form .form-group{
@@ -1327,6 +1390,10 @@ table {
 
 .box-form .coloumn-detail{
     padding: 0rem;
+}
+
+textarea.form-control{
+  height: 150px;
 }
 
 .form-control{
@@ -1450,12 +1517,54 @@ margin-top: 15px;
 margin-top: 10px;
 }
 
-.bi-dash-lg{
-transform: rotate(90deg);
-}
 
 /* End Footer  */
 
+/* ALERT */
+.alert h3{
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--white);
+}
+
+.alert{
+  background-color: var(--footer-color);
+}
+
+.widht-full{
+  width: 100%;
+}
+
+.alert-danger{
+  background-color: red !important;
+}
+/* END ALERT */
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px var(--white);     
+  background: var(--white);    
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+/* END SCROLL BAR */
+
+/* PAGINATION */
+.page-item.active .page-link {
+  background-color: var(--header-color);
+  border-color: var(--header-color);
+}
+
+.page-link{
+  color: var(--header-color);
+}
+/* END PAGINATION */
 
 
 /* RESPONSIVE */
@@ -1463,3 +1572,426 @@ transform: rotate(90deg);
 /* Header */
 
 /* End Header */
+
+@media (max-width: 768px)
+{
+/* Home */
+.box-container{
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.box-contain{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.box-contain .box-container{
+  padding: 0;
+  gap: 5rem;
+}
+
+.box-contain .banner{
+  width: 250px;
+  height: 250px;
+}
+
+.box-contain h2{
+  font-size: medium;
+  margin-bottom: 1rem;
+}
+
+.desc-banner{
+  font-size: x-small;
+}
+
+.home-section{
+  width: auto;
+}
+
+.box-contain .btn-regist{
+  padding: 0.5rem;
+}
+
+.container-home .btn-regist{
+  font-size: xx-small;
+}
+
+.lft{
+  padding: 1rem;
+}
+
+.rght{
+  padding: 1rem;
+}
+
+/* Footer */
+.footer .box-container{
+  grid-template-columns: 40% 40%;
+}
+
+.box-send .input-group {
+  width: 130px;
+}
+
+.box-send {
+  gap: 3.5rem;
+}
+
+.box-credit{
+  margin-right: 1rem;
+}
+
+/* BLOG */
+
+.store-box3{
+  padding-right: 0;
+}
+
+/* ABOUT-US */
+
+.box-aboutus{
+  display: unset;
+}
+
+.aboutus .top{
+  margin-top: 6rem;
+}
+
+/* STORE */
+
+.store-page .box-container{
+  display: grid;
+  gap: 1.3rem;
+  grid-template-columns: 50% 50%;
+}
+
+.store-page .store-card{
+  width: 200px;
+}
+
+.store-card .box-store{
+  width: 150px;
+  height: 150px;
+}
+
+.product-store .box-container{
+ justify-content: space-between;
+}
+
+.store-card{
+  width: 200px;
+}
+
+/* BLOG */
+.blog .box-container{
+  display: grid;
+  gap: 1.3rem;
+  grid-template-columns: 50% 50%;
+}
+
+.blog-card{
+  width: 200px;
+}
+
+.box-blog{
+  width: 200px;
+  height: 220px;
+}
+
+.info-blog{
+  grid-template-columns: 15% 4% 20%
+}
+
+/* DASH ADMIN */
+
+.sidebar.open ~ .home-section {
+  left: 220px;
+}
+
+.home-section{
+  left: 0;
+}
+
+.home-section .grid-dash{
+  gap: 2rem;
+}
+
+.home-section .grid-dash .grid-profile {
+  grid-column: 1/5;
+  grid-row: 1/3;
+}
+
+.home-section .grid-dash .grid-product {
+  grid-column: 1/3;
+  grid-row: 3/5;
+}
+
+.home-section .grid-dash .grid-blog {
+  grid-column: 3/5;
+  grid-row: 3/5;
+}
+
+/* STORE ADMIN */
+.action{
+  width: 230px;
+}
+
+table{
+  width: 90%;
+}
+
+/* MY STORE UMKM */
+.home-section .grid-dash .grid-image {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
+.home-section .grid-dash .grid-account {
+  grid-column: 3/5;
+  grid-row: 1/2;
+}
+
+.home-section .grid-dash .grid-store {
+  grid-column: 1/5;
+  grid-row: 2/5;
+}
+
+.text-content.height {
+  min-height: 500px;
+}
+
+/* FORM */
+.box-form{
+  width: 80%;
+}
+
+}
+
+
+@media (max-width: 416px)
+{
+
+  section{
+    padding: 5rem 10%;
+  }
+
+  /* HOME */
+  .home .slide{
+    height: 500px;
+  }
+
+  .home .slide .content {
+    padding-top: 1rem;
+    margin: 2rem;
+  }
+
+  .content h2{
+    font-size: 5rem;
+  }
+
+  .content h3{
+    font-size: 1rem;
+  }
+  
+  .content .btn-regist {
+    font-size: 1rem;
+  }
+
+  .about-us{
+    padding-left: 1.5rem !important;
+    height: 500px !important;
+  }
+
+  .mark-aboutus {
+    width: 300px;
+    height: 500px;
+  }
+
+  .mark {
+    font-size: 1.5rem;
+  }
+
+  .box-contain .box-container{
+    gap: 0.8rem;
+  }
+
+  .box-contain .banner{
+    width: 180px;
+    height: 200px;
+  }
+
+  /* FOOTER */
+  .footer .box-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .sample h3{
+    font-size: 1rem !important;
+  }
+
+  .box-send{
+    gap: 4rem;
+  }
+
+  .box-credit{
+    font-size: x-small;
+    gap: 0.8rem;
+    justify-content: flex-start;
+    margin-left: 1rem;
+  }
+  .box-credit .fab{
+    margin-top: 0.8rem;
+  }
+
+  /* BLOG */
+  .cate-blog{
+    gap: 1rem;
+  }
+
+  .blog .box-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 50% 50%;
+  }
+
+  .blog .container-home{
+    padding: 0;
+  }
+
+  .blog-card{
+    width: 150px;
+  }
+
+  .box-blog{
+    width: 150px;
+    height: 150px;
+  }
+
+  .info-blog {
+    grid-template-columns: 35% 10% 20%;
+  }
+
+  /* STROE */
+  .store-box{
+    grid-template-columns: unset;
+    grid-row: inherit;
+  }
+
+  .store-page .store-card {
+    width: 150px;
+  }
+
+  .store-box2{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .store-page .box-container{
+    justify-content: unset;
+  }
+
+  .store-card{
+    width: 150px;
+  }
+
+  /* ABOUT US */
+  .box-right{
+    height: auto;
+  }
+
+  /* FORM LOGIN */
+  .card-auth{
+    width: 340px;
+    height: 450px;
+  }
+
+  .card-auth h2{
+    font-size: 1.7rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .card-body{
+    justify-content: center;
+  }
+
+  /* DASH ADMIN */
+
+  .home-section{
+    width:auto;
+  }
+
+  .home-section .text {
+    margin: 18px 18px 18px 0;
+  }
+  
+  .home-section .grid-dash {
+      padding: 2rem 0;
+      gap: 1rem;
+  }
+
+  .home-section .grid-dash .grid-profile {
+    grid-column: 1/9;
+  }
+
+  .home-section .grid-dash .grid-product {
+    grid-column: 1/9;
+    grid-row: 3/5;
+  }
+  
+  .home-section .grid-dash .grid-blog {
+    grid-column: 1/9;
+    grid-row: 5/7;
+  }
+
+  /* STROE ADMIN */
+  .coloumn-detail{
+    padding: 2rem 0;
+  }
+
+  table{
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* MY STROE UMKM */
+  .home-section .grid-dash .grid-image {
+    grid-column: 1/5;
+  }
+
+  .home-section .grid-dash .grid-account {
+    grid-column: 1/5;
+    grid-row: 2/3;
+  }
+
+  .home-section .grid-dash .grid-store {
+    grid-row: 3/5;
+  }
+
+  .text-content.height {
+    min-height: 900px;
+  }
+
+  .grid-store .coloumn-detail{
+    padding: 2rem;
+  }
+
+  /* BLOG UMKM */
+  .blog-container{
+    gap: 5rem;
+  }
+
+  /* FORM */
+  .box-form {
+    width: 100%;
+  }
+
+  .formsbox {
+    padding: 0.8rem 3rem;
+  }
+
+}

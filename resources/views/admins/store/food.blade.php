@@ -38,7 +38,7 @@
                 <td class="action">
                     <div class="action-flex">
                         <a href="#"><i class='bx bx-trash'></i></a>
-                        <a href="#"><i class='bx bx-right-arrow-circle'></i></a>
+                        <a href="/food&drink-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
                     </div>
                 </td>
             </tr>

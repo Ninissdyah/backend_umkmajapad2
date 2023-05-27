@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dashboard;
 use App\Models\User;
@@ -17,6 +18,7 @@ class MyStoreController extends Controller
         $id = auth()->guard('admin')->user()->vendorId;
         $dashboard = Dashboard::where('vendorId', $id)->get();
         $users = User::where('id', $id)->get();
+        // return response()->json($dashboard, 200);
         return view('pemilikUMKM.my-store', compact('dashboard', 'users'));
     }
 
@@ -68,11 +70,16 @@ class MyStoreController extends Controller
             $imageName = $filenameUnik . '_' . time() . '.' . $extension; 
             Image::make($request->file('imagePath'))->resize(500, 500, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save('storage/dashboard/'.'/'.$imageName);
+            })->save('storage/dashboard/'.$imageName);
             $dashboard->imagePath = $imageName;
         } 
 
         $dashboard->save();
+        if (!$dashboard){
+            return response()->json("Error Saving", 500);
+        } else{
+            return response()->json($dashboard, 201);
+        }
         return redirect('/myStore')->with(['success' => 'Store Detail created successfully!']);
     }
 

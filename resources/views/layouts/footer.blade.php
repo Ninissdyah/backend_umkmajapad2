@@ -43,7 +43,6 @@
     </div> 
     <div class="box-credit">
         <p>UMKMAja!</p>
-        <div class="bi-dash-lg fa-2x"></div>
         <i class="fab fa-facebook fa-2x"></i>
         <i class="fab fa-instagram fa-2x"></i>
         <i class="fab fa-twitter fa-2x"></i>

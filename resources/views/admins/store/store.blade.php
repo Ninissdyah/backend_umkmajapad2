@@ -2,9 +2,9 @@
 
 @section('content')
 <section class="home-section plus-bottom1">
-    <div class="text">I STORE</div>
     <div class="coloumn-detail">
-        <div class="form-group">
+    <div class="text storez">STORE</div>
+        <div class="form-group form-group2">
             <select name="category" class="form-select form-control @error('category') is-invalid @enderror" onChange="location=this.value">
                 <option value="/storeAdmin">Category</option>
                 <option value="/storeAdmin/art">Art</option>
@@ -18,6 +18,14 @@
             @error('category')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror  
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{ Session::get('success') }}
+                    @php
+                    Session::forget('success');
+                    @endphp
+                </div>
+            @endif
         </div>
     </div>
     <div>
@@ -37,7 +45,21 @@
                 <td>{{$store->updated_at}}</td>
                 <td class="action">
                     <div class="action-flex">
-                    <a href="/store-details/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @if (($store->category) == "Food&Drink")
+                        <a href="/food-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @elseif (($store->category) == "Art")
+                        <a href="/art-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @elseif (($store->category) == "Beauty&Health")
+                        <a href="/beauty-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @elseif (($store->category) == "Clothes")
+                        <a href="/clothes-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @elseif (($store->category) == "Electronic")
+                        <a href="/electronic-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @elseif (($store->category) == "Furniture")
+                        <a href="/furniture-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @else
+                        <a href="/other-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
+                    @endif
                     </div>
                 </td>
             </tr>

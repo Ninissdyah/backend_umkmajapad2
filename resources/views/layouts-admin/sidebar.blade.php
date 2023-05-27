@@ -8,8 +8,8 @@
       <li class="store-list">
         <a href="/dashboardAdmin">
         <img class="img img-profile" src="https://i.etsystatic.com/39180577/r/il/943566/4432680343/il_fullxfull.4432680343_9tjj.jpg" alt="ini-gambar">
-          <span class="links_name store">Store Name</span>
-         <span class="tooltip">Store Name</span>
+          <span class="links_name store">{{Auth::guard('admin')->user()->name}}</span>
+          <span class="tooltip">{{Auth::guard('admin')->user()->name}}</span>
         </a>
       </li>
       <li class="list-side">

@@ -52,24 +52,29 @@
             <hr>
         </div>
         @if(count($dashboard)>0)
-            @foreach($dashboard as $dashboards)
             <div class="store-box2">
                 <div class="box-container">
+                @foreach($dashboard as $dashboards)
                     <a href="/beauty-store/{{$dashboards->id}}">
                     <div class="store-card card">
                         <div class="box-store box">
                             <img class="image" src="{{ asset ('storage/dashboard/'.$dashboards->imagePath) }}">
                         </div>
                         <p class="title">{{$dashboards->storeName}}</p>
-                        <p>{{$dashboards->desc}}</p>
+                        <p>{{substr($dashboards->desc,0,50)}}</p>
                     </div></a>
+                @endforeach 
+                </div>
+                <div class="container text-center">
+                    <div class="d-flex justify-content-center" >
+                        {{ $dashboard->links() }}
+                    </div>
                 </div>
             </div> 
-            @endforeach 
         @else
-            <div class="store-box2">
-                <div class="alert alert-success alert-block">
-                    <h3>Toko tidak tersedia</h3>
+            <div class="store-box2 widht-full">
+                <div class="alert alert-block">
+                    <h3>Store not available yet</h3>
                 </div>
             </div>
         @endif

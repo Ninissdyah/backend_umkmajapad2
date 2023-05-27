@@ -8,7 +8,10 @@
     </div>
     <div class="info-store">
         <div class="profile">
-            <img class="img img-profile" src="{{asset('storage/dashboard/'. $dashboards->imagePath)}}" alt="ini-gambar">
+            <a class="example-image-link" href="{{asset('storage/dashboard/'. $dashboards->imagePath)}}"
+                data-lightbox="example-2">
+                    <img class="img img-profile example-image img-fluid mb-2"
+                    src="{{asset('storage/dashboard/'. $dashboards->imagePath)}}" alt="image-1"></a>
         </div>
         <div class="profile-name">
             <p class="medium-bold">{{$dashboards->storeName}}</p>
@@ -32,16 +35,12 @@
         <div class="box-container">
         @if(!empty($product))
             @foreach($product as $products)
-            <div id="myBtn" class="store-card card">
-                <div id="myModal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                        <span class="close"></span>
-                        <img class="img-modal" src="{{ asset ('storage/product/'.$products->imagePath) }}" alt="iniGambar">
-                    </div>
-                </div>
+            <div class="store-card card">
                 <div class="box-store box">
-                    <img class="image" src="{{ asset ('storage/product/'.$products->imagePath) }}" alt="iniGambar">
+                    <a class="example-image-link" href="{{ asset ('storage/product/'.$products->imagePath) }}"
+                        data-lightbox="example-2" data-title="{{$products->description}}">
+                            <img class="image example-image img-fluid mb-2"
+                            src="{{ asset ('storage/product/'.$products->imagePath) }}" alt="image-1"></a> 
                 </div>
                 <p class="title-product">{{$products->productName}}</p>
                 <p class="harga-product"><b>Rp {{$products->productPrice}}</b></p>
@@ -55,6 +54,12 @@
                 </div>
             </div>
         @endif
+        </div>
+        <div class="container text-center">
+            <div class="d-flex justify-content-center" >
+                {{$product->links() }}
+            </div>
+        </div>
     </div>
 </section>
 @endsection

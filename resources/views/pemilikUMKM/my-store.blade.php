@@ -17,18 +17,17 @@
               <h3 class="alertx">{{ $message }}</h3>
           </div>
     @endif
-    <div class="text">I MY STORE</div>
+    <div class="text">MY STORE</div>
     <div class="grid-dash">
-        <div class="grid grid-image">
-            <div class="profile">
-                @foreach($dashboard as $dashboards)
-                <img class="img dash-profile img-profile" src="{{ asset ('storage/dashboard/'.$dashboards->imagePath) }}" alt="ini-gambar">
-                @endforeach
-            </div>
-            <div class="button-content">
-                <a href="/myStore/create"><i class='bx bx-pencil'></i></a>
-            </div>
-        </div>
+        @if(!empty($dashboard))
+            @foreach($dashboard as $dashboards)
+                <div class="grid grid-image">
+                    <div class="profile">
+                        <img class="img dash-profile img-profile" src="{{ asset ('storage/dashboard/'.$dashboards->imagePath) }}" alt="ini-gambar">
+                    </div>
+                </div>
+            @endforeach
+        @endif
         @foreach($users as $user)
         <div class="grid grid-account">
             <div class="text-in">Account Detail</div>
@@ -40,9 +39,9 @@
                 </div>
             </div>
             <div class="content-profile">
-                <p class="sub-title">Password</p>
-                <div class="text-content">
-                    <p>{{$user->password}}</p>
+                <p class="sub-title">Reset Your Password</p>
+                <div>
+                    <a href="{{ route('password.request') }}"><button type="button" class="btn-form btn">Reset Password</button></a>
                 </div>
             </div>
         </div>
@@ -103,14 +102,17 @@
                     <p>{{$dashboards->desc}}</p>
                 </div>
             </div>
+            <div class="button-content">
+                <a href="/dashboard/{{$dashboards->id}}/edit"><i class='bx bx-pencil'></i></a>
+            </div>
             @endforeach
             @if(count($dashboard)==0)
             <div class="grid grid-image">
                 <div class="profile">
-                    <img class="img dash-profile img-profile" src="" alt="ini-gambar">
+                    <img class="img dash-profile img-profile" src="{{ asset ('storage/store.jpg') }}" alt="ini-gambar"> 
                 </div>
                 <div class="button-content">
-                    <a href="/myStore/create"><i class='bx bx-pencil'></i></a>
+                    <a href="/myStore/create"><i class='bx bx-plus'></i></a>
                 </div>
             </div>
             <div class="grid grid-store">
@@ -168,10 +170,10 @@
                     <p>Description</p>
                 </div>
             </div>
-            @endif
             <div class="button-content">
-                <a href="/myStore/create"><i class='bx bx-pencil'></i></a>
+                <a href="/myStore/create"><i class='bx bx-plus'></i></a>
             </div>
+            @endif
         </div>
     </div>
 </section>

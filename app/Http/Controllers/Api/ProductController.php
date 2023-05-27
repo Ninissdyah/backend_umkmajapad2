@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
 use App\Models\Dashboard;
 use App\Models\Product;
 use Illuminate\Support\Facades\File;
@@ -18,6 +20,7 @@ class ProductController extends Controller
         $product = Product::where('vendorId', $id)->paginate(12);
         $no = 1;
         return view('pemilikUMKM.product', compact('product','dashboard'), compact('no'));
+        
     }
 
     public function create()
@@ -59,7 +62,7 @@ class ProductController extends Controller
             $imageName = $filenameUnik . '_' . time() . '.' . $extension; 
             Image::make($request->file('imagePath'))->resize(500, 700, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save('storage/product'.'/'.$imageName);
+            })->save('storage/product/'.$imageName);
             $products->imagePath = $imageName;
         } 
 

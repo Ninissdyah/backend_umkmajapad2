@@ -19,6 +19,11 @@
                     <h3 class="alertx">{{ $message }}</h3>
                 </div>
             @endif
+            @if (session('error'))
+                <div class="alert alert-danger alert-block">
+                    {{ session('error') }}
+                </div>
+            @endif
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -29,11 +34,9 @@
                         <div class="card-body">
                             <form method="POST" action="{{ url('admin/login') }}">
                                 @csrf
-
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <input id="email" type="email"  class="form-content @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

@@ -2,9 +2,9 @@
 
 @section('content')
 <section class="home-section plus-bottom1">
-    <div class="text">I STORE</div>
     <div class="coloumn-detail">
-        <div class="form-group">
+    <div class="text storez">STORE</div>
+        <div class="form-group form-group2">
             <select name="category" class="form-select form-control @error('category') is-invalid @enderror" onChange="location = this.value;">
                 <option value="/storeAdmin">Category</option>
                 <option value="/storeAdmin/art">Art</option>
@@ -38,7 +38,7 @@
                 <td class="action">
                     <div class="action-flex">
                         <a href="#"><i class='bx bx-trash'></i></a>
-                        <a href="#"><i class='bx bx-right-arrow-circle'></i></a>
+                        <a href="/beauty-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
                     </div>
                 </td>
             </tr>
@@ -51,7 +51,7 @@
                 <td class="action">
                     <div class="action-flex">
                         <a href="#"><i class='bx bx-trash'></i></a>
-                        <a href="#"><i class='bx bx-right-arrow-circle'></i></a>
+                        <a href="/art-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
                     </div>
                 </td>
             </tr>

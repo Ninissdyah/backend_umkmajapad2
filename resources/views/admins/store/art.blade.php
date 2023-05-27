@@ -2,24 +2,24 @@
 
 @section('content')
 <section class="home-section plus-bottom1">
-    <div class="text">I STORE</div>
     <div class="coloumn-detail">
-        <div class="form-group">
-            <select name="category" class="form-select form-control @error('category') is-invalid @enderror" onChange="location = this.value;">
-                <option value="/storeAdmin">Category</option>
-                <option value="/storeAdmin/art" selected>Art</option>
-                <option value="/storeAdmin/beauty&health" >Beauty&Health</option>
-                <option value="/storeAdmin/clothes">Clothes</option>
-                <option value="/storeAdmin/electronic" >Electronic</option>
-                <option value="/storeAdmin/food&drink">Food&Drink</option>
-                <option value="/storeAdmin/furniture">Furniture</option>
-                <option value="/storeAdmin-other">Other</option>
-            </select>
-            @error('category')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror  
+        <div class="text storez">STORE</div>
+            <div class="form-group form-group2">
+                <select name="category" class="form-select form-control @error('category') is-invalid @enderror" onChange="location = this.value;">
+                    <option value="/storeAdmin">Category</option>
+                    <option value="/storeAdmin/art" selected>Art</option>
+                    <option value="/storeAdmin/beauty&health" >Beauty&Health</option>
+                    <option value="/storeAdmin/clothes">Clothes</option>
+                    <option value="/storeAdmin/electronic" >Electronic</option>
+                    <option value="/storeAdmin/food&drink">Food&Drink</option>
+                    <option value="/storeAdmin/furniture">Furniture</option>
+                    <option value="/storeAdmin-other">Other</option>
+                </select>
+                @error('category')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror  
+            </div>
         </div>
-    </div>
     <div>
         <table>
             <tr>
@@ -37,7 +37,7 @@
                 <td class="action">
                     <div class="action-flex">
                         <a href="#"><i class='bx bx-trash'></i></a>
-                        <a href="#"><i class='bx bx-right-arrow-circle'></i></a>
+                        <a href="/art-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
                     </div>
                 </td>
             </tr>
@@ -50,7 +50,8 @@
                 <td class="action">
                     <div class="action-flex">
                         <a href="#"><i class='bx bx-trash'></i></a>
-                        <a href="#"><i class='bx bx-right-arrow-circle'></i></a>
+                        <a href="/blockStore/{{$store->id}}"><i class='bx bx-trash'></i></a>
+                        <a href="/art-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
                     </div>
                 </td>
             </tr>
