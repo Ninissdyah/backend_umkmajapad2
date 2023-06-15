@@ -6,7 +6,7 @@
     <div class="text storez">STORE</div>
         <div class="form-group form-group2">
             <select name="category" class="form-select form-control @error('category') is-invalid @enderror" onChange="location=this.value">
-                <option value="/storeAdmin">Category</option>
+                <option value="/storeAdmin" selected>Category</option>
                 <option value="/storeAdmin/art">Art</option>
                 <option value="/storeAdmin/beauty&health" >Beauty&Health</option>
                 <option value="/storeAdmin/clothes">Clothes</option>
@@ -42,9 +42,16 @@
             <tr>
                 <td class="no">1</td>
                 <td>{{$store->storeName}}</td>
-                <td>{{$store->updated_at}}</td>
+                <td>{{$store->last_login_at}}</td>
                 <td class="action">
                     <div class="action-flex">
+                        <div class="button-content2">
+                            <form action= "{{ route('storeAdmin.destroy', $store->vendorId)}}" method="POST">@method('DELETE')
+                                {{ csrf_field() }}
+                                <input type="hidden" name="vendorId" value="{{$store->vendorId}}">
+                                <button type="submit" onclick="return confirm('Are You Sure You Want To Remove This User?');"><i class='bx bx-trash'></i></button>
+                            </form>
+                        </div>
                     @if (($store->category) == "Food&Drink")
                         <a href="/food-store/{{$store->id}}"><i class='bx bx-right-arrow-circle'></i></a>
                     @elseif (($store->category) == "Art")

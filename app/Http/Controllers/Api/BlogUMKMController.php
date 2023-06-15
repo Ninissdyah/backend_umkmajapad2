@@ -15,11 +15,9 @@ class BlogUMKMController extends Controller
 {
     public function index()
     {
-        $id = auth()->guard('admin')->user()->vendorId;
-        $blogs = Blogs::where('vendorId', $id)->paginate(12);
-        $dashboard = Dashboard::where('vendorId', $id)->get();
-        // return response()->json($blogs, 200);
-        return view('pemilikUMKM.blog', compact('blogs', 'dashboard'));
+        $id= Auth::user()->vendorId;
+        $blogs = Blogs::where('vendorId', $id)->get();
+        return response()->json($blogs, 200);
 
     }
 
@@ -52,7 +50,9 @@ class BlogUMKMController extends Controller
         ],$messages);
 
         $blogs = new Blogs;
-        $blogs->vendorId = Auth::guard('admin')->user()->vendorId;
+        
+        // $blogs->vendorId = Auth::guard('admin')->user()->vendorId;
+        $blogs->vendorId = Auth::user()->vendorId;
         $blogs->contentTitle = $request->input('contentTitle');
         $blogs->content = $request->input('content');
         $blogs->author = $request->input('author');
@@ -76,7 +76,6 @@ class BlogUMKMController extends Controller
         } else{
             return response()->json($blogs, 201);
         }
-        return redirect('/blogUMKM')->with(['success' => 'Content uploaded successfully']);
     }
 
     /**
@@ -105,11 +104,10 @@ class BlogUMKMController extends Controller
         $destination = 'storage/blogs/'.$blogs->imagePath;
         File::delete($destination);
         $blogs->delete();
-        // if(!$blogs){
-        //     return response()->json("Error deleting", 500);
-        // }else{
-        //     return response()->json("Delete Success", 200);
-        // }
-        return redirect('/blogUMKM')->with(['berhasil' => 'Content deleted successfully']);
+        if(!$blogs){
+            return response()->json("Error deleting", 500);
+        }else{
+            return response()->json("Delete Success", 200);
+        }
     }
 }

@@ -6,7 +6,7 @@
     <div class="cate-blog">
         <a href="/art">Art</a>
         <a href="/bazar">Bazar</a>
-        <a href="/beauty" class="active">Beauty&Health</a>
+        <a href="/beauty&health" class="active">Beauty&Health</a>
         <a href="/clothes">Clothes</a>
     </div>
     <div class="cate-blog">

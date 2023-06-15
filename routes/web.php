@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SendMailController;
+use App\Mail\SendMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,52 +17,52 @@ use App\Http\Controllers\HomeController;
 */
 
 //Route Halaman Home
-Route::get('/', [App\Http\Controllers\Api\HomeController::class, 'index']);
-Route::resource('home', 'App\Http\Controllers\Api\HomeController');
+Route::get('/', [App\Http\Controllers\HomesController::class, 'index']);
+Route::resource('home', 'App\Http\Controllers\HomesController');
 
 
 //Route Halaman Blog
-Route::resource('blog', 'App\Http\Controllers\Api\BlogController');
-Route::get('/food&drink', [App\Http\Controllers\Api\BlogController::class, 'food']);
-Route::get('/art', [App\Http\Controllers\Api\BlogController::class, 'art']);
-Route::get('/bazar', [App\Http\Controllers\Api\BlogController::class, 'bazar']);
-Route::get('/beauty&health', [App\Http\Controllers\Api\BlogController::class, 'beauty']);
-Route::get('/clothes', [App\Http\Controllers\Api\BlogController::class, 'clothes']);
-Route::get('/electronic', [App\Http\Controllers\Api\BlogController::class, 'electronic']);
-Route::get('/furniture', [App\Http\Controllers\Api\BlogController::class, 'furniture']);
-Route::get('/webinar', [App\Http\Controllers\Api\BlogController::class, 'webinar']);
+Route::resource('blog', 'App\Http\Controllers\BlogsController');
+Route::get('/food&drink', [App\Http\Controllers\BlogsController::class, 'food']);
+Route::get('/art', [App\Http\Controllers\BlogsController::class, 'art']);
+Route::get('/bazar', [App\Http\Controllers\BlogsController::class, 'bazar']);
+Route::get('/beauty&health', [App\Http\Controllers\BlogsController::class, 'beauty']);
+Route::get('/clothes', [App\Http\Controllers\BlogsController::class, 'clothes']);
+Route::get('/electronic', [App\Http\Controllers\BlogsController::class, 'electronic']);
+Route::get('/furniture', [App\Http\Controllers\BlogsController::class, 'furniture']);
+Route::get('/webinar', [App\Http\Controllers\BlogsController::class, 'webinar']);
 
 
 //Route Halaman Blog Detail
-Route::get('/blog-details/{id}', [App\Http\Controllers\Api\BlogUMKMController::class, 'show']);
-Route::get('/blog-details-admin/{id}', [App\Http\Controllers\Api\BlogAdminController::class, 'show']);
-Route::resource('product', 'App\Http\Controllers\Api\ProductController');
-Route::resource('blogUMKM', 'App\Http\Controllers\Api\BlogUMKMController');
-Route::resource('blogAdmin', 'App\Http\Controllers\Api\BlogAdminController');
+Route::get('/blog-details/{id}', [App\Http\Controllers\BlogUMKMsController::class, 'show']);
+Route::get('/blog-details-admin/{id}', [App\Http\Controllers\BlogAdminsController::class, 'show']);
+Route::resource('product', 'App\Http\Controllers\ProductsController');
+Route::resource('blogUMKM', 'App\Http\Controllers\BlogUMKMsController');
+Route::resource('blogAdmin', 'App\Http\Controllers\BlogAdminsController');
 
 
 //Route Halaman Store
-Route::get('/stores', [App\Http\Controllers\Api\StoreController::class, 'index'])->name('stores');
+Route::get('/stores', [App\Http\Controllers\StoresController::class, 'index'])->name('stores');
 
-Route::get('/art-store', [App\Http\Controllers\Api\StoreController::class, 'art']);
-Route::get('/beauty-store', [App\Http\Controllers\Api\StoreController::class, 'beauty']);
-Route::get('/clothes-store', [App\Http\Controllers\Api\StoreController::class, 'clothes']);
-Route::get('/electronic-store', [App\Http\Controllers\Api\StoreController::class, 'electronic']);
-Route::get('/furniture-store', [App\Http\Controllers\Api\StoreController::class, 'furniture']);
-Route::get('/other', [App\Http\Controllers\Api\StoreController::class, 'other']);
+Route::get('/art-store', [App\Http\Controllers\StoresController::class, 'art']);
+Route::get('/beauty-store', [App\Http\Controllers\StoresController::class, 'beauty']);
+Route::get('/clothes-store', [App\Http\Controllers\StoresController::class, 'clothes']);
+Route::get('/electronic-store', [App\Http\Controllers\StoresController::class, 'electronic']);
+Route::get('/furniture-store', [App\Http\Controllers\StoresController::class, 'furniture']);
+Route::get('/other', [App\Http\Controllers\StoresController::class, 'other']);
 
 //Route Halaman Store Detail (Sementara)
-Route::get('/store-detail', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
-Route::get('/food/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
-Route::get('/art/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
-Route::get('/Clothes/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
-Route::get('/furniture/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
-Route::get('/electronic/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
-Route::get('/beauty/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
-Route::get('/bazar/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
-Route::get('/webinar/{id}', [App\Http\Controllers\Api\BlogController::class, 'blogDetail']);
+Route::get('/store-detail', [App\Http\Controllers\StoresController::class, 'storeDetail']);
+Route::get('/food/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
+Route::get('/art/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
+Route::get('/Clothes/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
+Route::get('/furniture/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
+Route::get('/electronic/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
+Route::get('/beauty/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
+Route::get('/bazar/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
+Route::get('/webinar/{id}', [App\Http\Controllers\BlogsController::class, 'blogDetail']);
 
-Route::resource('dashboard', 'App\Http\Controllers\Api\DashboardUMKMController');
+Route::resource('dashboard', 'App\Http\Controllers\DashboardUMKMsController');
 
 //Route Halaman About Us
 Route::get('/aboutus', function () {
@@ -70,44 +72,47 @@ Route::get('/aboutus', function () {
 // Route Auth
 Auth::routes();
 Route::group(['middleware'=>['admin']],function(){
-    Route::resource('admin', 'App\Http\Controllers\Api\AdminController');
-    Route::get('logout', [App\Http\Controllers\Api\AdminController::class, 'logout']);
+    Route::resource('admin', 'App\Http\Controllers\AdminsController');
+    Route::get('logout', [App\Http\Controllers\AdminsController::class, 'logout']);
 });
 
-Route::get('admin/login', [App\Http\Controllers\Api\AdminController::class, 'login']);
-Route::post('admin/login', [App\Http\Controllers\Api\AdminController::class, 'login']);
-Route::get('store/register', [App\Http\Controllers\Api\AuthController::class, 'login']);
-Route::post('store/register', [App\Http\Controllers\Api\AuthController::class, 'register']);
-Route::post('/reset', [App\Http\Controllers\Api\VendorController::class, 'reset']);
 
-Route::get('/dashboardUMKM', [App\Http\Controllers\Api\DashboardUMKMController::class, 'index'])->name('dashboardUMKM');
-Route::get('/myStore', [App\Http\Controllers\Api\MyStoreController::class, 'index'])->name('myStore');
-Route::get('/product', [App\Http\Controllers\Api\ProductController::class, 'index'])->name('product');
-Route::get('/blogUMKM', [App\Http\Controllers\Api\BlogUMKMController::class, 'index'])->name('blogUMKM');
 
-Route::get('/myStore/create', [App\Http\Controllers\Api\MyStoreController::class, 'create']);
-Route::post('/myStore/store', [App\Http\Controllers\Api\MyStoreController::class, 'store'])->name('myStore.store');
+Route::get('admin/login', [App\Http\Controllers\AdminsController::class, 'login']);
+Route::post('admin/login', [App\Http\Controllers\AdminsController::class, 'login']);
+Route::get('store/register', [App\Http\Controllers\AuthsController::class, 'login']);
+Route::post('store/register', [App\Http\Controllers\AuthsController::class, 'register']);
 
-Route::get('/storeAdmin', [App\Http\Controllers\Api\StoreAdminController::class, 'index'])->name('storeAdmin');
-Route::get('/dashboardAdmin', [App\Http\Controllers\Api\AdminController::class, 'index'])->name('dashboardAdmin');
-Route::get('/storeAdmin/food&drink', [App\Http\Controllers\Api\StoreAdminController::class, 'food']);
-Route::get('/storeAdmin/art', [App\Http\Controllers\Api\StoreAdminController::class, 'art']);
-Route::get('/storeAdmin/beauty&health', [App\Http\Controllers\Api\StoreAdminController::class, 'beauty']);
-Route::get('/storeAdmin/clothes', [App\Http\Controllers\Api\StoreAdminController::class, 'clothes']);
-Route::get('/storeAdmin/electronic', [App\Http\Controllers\Api\StoreAdminController::class, 'electronic']);
-Route::get('/storeAdmin/furniture', [App\Http\Controllers\Api\StoreAdminController::class, 'furniture']);
-Route::get('/storeAdmin/other', [App\Http\Controllers\Api\StoreAdminController::class, 'other']);
-Route::get('/blogAdmin', [App\Http\Controllers\Api\BlogAdminController::class, 'index'])->name('blogAdmin');
+Route::get('/myStore', [App\Http\Controllers\MyStoresController::class, 'index'])->name('myStore');
+Route::get('/product', [App\Http\Controllers\ProductsController::class, 'index'])->name('product');
+Route::get('/blogUMKM', [App\Http\Controllers\BlogUMKMsController::class, 'index'])->name('blogUMKM');
 
-Route::get('/food-store/{id}', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
-Route::get('/art-store/{id}', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
-Route::get('/clothes-store/{id}', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
-Route::get('/furniture-store/{id}', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
-Route::get('/electronic-store/{id}', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
-Route::get('/beauty-store/{id}', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
-Route::get('/other-store/{id}', [App\Http\Controllers\Api\StoreController::class, 'storeDetail']);
+Route::get('/myStore/create', [App\Http\Controllers\MyStoresController::class, 'create']);
+Route::post('/myStore/store', [App\Http\Controllers\MyStoresController::class, 'store'])->name('myStore.store');
 
-Route::get('/send', [App\Http\Controllers\Api\HomeController::class, 'send'])->name('send.message');
+Route::delete('storeAdmin/{storeAdmin}', [App\Http\Controllers\StoreAdminsController::class, 'destroy'])->name('storeAdmin.destroy');
+Route::get('/storeAdmin', [App\Http\Controllers\StoreAdminsController::class, 'index'])->name('storeAdmin');
+Route::get('/dashboardAdmin', [App\Http\Controllers\AdminsController::class, 'index'])->name('dashboardAdmin');
+Route::get('/storeAdmin/food&drink', [App\Http\Controllers\StoreAdminsController::class, 'food']);
+Route::get('/storeAdmin/art', [App\Http\Controllers\StoreAdminsController::class, 'art']);
+Route::get('/storeAdmin/beauty&health', [App\Http\Controllers\StoreAdminsController::class, 'beauty']);
+Route::get('/storeAdmin/clothes', [App\Http\Controllers\StoreAdminsController::class, 'clothes']);
+Route::get('/storeAdmin/electronic', [App\Http\Controllers\StoreAdminsController::class, 'electronic']);
+Route::get('/storeAdmin/furniture', [App\Http\Controllers\StoreAdminsController::class, 'furniture']);
+Route::get('/storeAdmin/other', [App\Http\Controllers\StoreAdminsController::class, 'other']);
+Route::get('/blogAdmin', [App\Http\Controllers\BlogAdminsController::class, 'index'])->name('blogAdmin');
+
+Route::get('/food-store/{id}', [App\Http\Controllers\StoresController::class, 'storeDetail']);
+Route::get('/art-store/{id}', [App\Http\Controllers\StoresController::class, 'storeDetail']);
+Route::get('/clothes-store/{id}', [App\Http\Controllers\StoresController::class, 'storeDetail']);
+Route::get('/furniture-store/{id}', [App\Http\Controllers\StoresController::class, 'storeDetail']);
+Route::get('/electronic-store/{id}', [App\Http\Controllers\StoresController::class, 'storeDetail']);
+Route::get('/beauty-store/{id}', [App\Http\Controllers\StoresController::class, 'storeDetail']);
+Route::get('/other-store/{id}', [App\Http\Controllers\StoresController::class, 'storeDetail']);
 
 //Route Halaman Blog Detail
-Route::get('/store-details/{id}', [App\Http\Controllers\Api\StoreAdminController::class, 'show']);
+Route::get('/store-details/{id}', [App\Http\Controllers\StoreAdminsController::class, 'show']);
+
+Route::post('/', [App\Http\Controllers\HomesController::class, 'sendMessage'])->name('sendEmail');
+
+Route::get('/search', [App\Http\Controllers\HomesController::class, 'search'])->name('buku.search');

@@ -22,21 +22,27 @@ use App\Http\Controllers\Api\UMKMController;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+
 Route::get('product', [ProductController::class, 'index']);
 Route::get('blogAdmin', [BlogAdminController::class, 'index']);
+
 Route::get('blog-details/{id}', [BlogAdminController::class, 'show']);
 
-Route::post('umkm/create', [UMKMController::class, 'createBlog']);
 Route::delete('blogAdmin/delete/{id}', [BlogAdminController::class, 'destroy']);
-
-Route::get('blogUMKM', [BlogUMKMController::class, 'index']);
-Route::post('api-blogUMKM/create', [BlogUMKMController::class, 'store']);
-// Route::delete('blogAdmin/delete/{id}', [BlogAdminController::class, 'destroy']);
-
-Route::post('mystore/create', [MyStoreController::class, 'store']);
+Route::delete('blogUMKM/delete/{id}', [BlogUMKMController::class, 'destroy']);
+Route::delete('productUMKM/delete/{id}', [ProductController::class, 'destroy']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('blogAdmin/create', [BlogAdminController::class, 'store']);
 
+    Route::get('blogUMKM', [BlogUMKMController::class, 'index']);
+    Route::post('blogUMKM/create', [BlogUMKMController::class, 'store']);
+
+    Route::get('productUMKM', [ProductController::class, 'index']);
+    Route::post('productUMKM/create', [ProductController::class, 'store']);
+
+    Route::get('mystore', [MyStoreController::class, 'index']);
+    Route::post('mystore/create', [MyStoreController::class, 'store']);
+    Route::post('mystore/edit/{id}', [MyStoreController::class, 'update']);
 });

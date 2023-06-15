@@ -1,31 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Dashboard;
 use App\Models\Blogs;
+use App\Models\Dashboard;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Image;
 use Auth;
 use Illuminate\Support\Facades\File;
 
 
-class MyStoreController extends Controller
+
+class DashboardUMKMsController extends Controller
 {
     public function index()
     {
-        $id = Auth::user()->vendorId;
+        $id = auth()->guard('admin')->user()->vendorId;
         $dashboard = Dashboard::where('vendorId', $id)->get();
-        return response()->json($dashboard, 200);
-
-    }
-
-    public function create()
-    {
-        $dashboard = Dashboard::all();
-        return view('form-input.form-store-detail', ['dashboard' => $dashboard]);
+        $jumlahProduk = Product::where('vendorId', $id)->count();
+        $jumlahBlog = Blogs::where('vendorId', $id)->count();
+        return view('pemilikUMKM.dashboard', compact('dashboard', 'jumlahProduk', 'jumlahBlog'));
     }
 
     public function store(Request $request)
@@ -124,7 +120,7 @@ class MyStoreController extends Controller
         ],$messages);
 
         $dashboard = Dashboard::find($id);
-        $dashboard->vendorId = Auth::user()->vendorId;
+        $dashboard->vendorId = Auth::guard('admin')->user()->vendorId;
         $dashboard->storeName = $request->input('storeName');
         $dashboard->address = $request->input('address');
         $dashboard->category = $request->input('category');

@@ -33,11 +33,13 @@
         <div class="sample">
             <h3>Send Your Message!</h3>
                 <div class="box-send">
-                    <form class="input-group">
-                    {{ csrf_field() }}
-                        <input type="text" class="form-control form-control-sm" aria-describedby="basic-addon2" fdprocessedid="bidmgj">
+                    <form method="GET" action="{{route('buku.search')}}">
+                        @csrf
+                        <div class="form-group mt-3">
+                            <input type="text" name="kata" class="form-control" placeholder="Cari...">
+                        </div>
+                        <button class="btn-send btn-submit">Send</button>
                     </form>
-                    <button class="btn-send" type="button">Send</button>
                 </div>
         </div>
     </div> 

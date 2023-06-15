@@ -1,16 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Api;
-
+namespace App\Http\Controllers;
+    
 use App\Http\Controllers\Controller;
 use App\Models\Blogs;
 use Image;
 use Auth;
+use Illuminate\Support\Facades\File;
+
 use Illuminate\Http\Request;
 
-class UMKMController extends Controller
+class BlogAdminsController extends Controller
 {
-    public function createBlog(Request $request)
+    public function index()
+    {
+        $blogs = Blogs::all();
+        return view('admins.blog', compact('blogs'));
+    }
+
+    public function create()
+    {
+        $blogs = Blogs::all();
+        return view('admins.form-blog', ['blogs' => $blogs]);
+    }
+
+    public function store(Request $request)
     {
         $messages = [
             'contentTitle.required'    => 'Title Content is required!',
@@ -33,6 +47,7 @@ class UMKMController extends Controller
         ],$messages);
 
         $blogs = new Blogs;
+        
         $blogs->vendorId = Auth::guard('admin')->user()->vendorId;
         $blogs->contentTitle = $request->input('contentTitle');
         $blogs->content = $request->input('content');
@@ -52,11 +67,32 @@ class UMKMController extends Controller
         } 
 
         $blogs->save();
-        if (!$blogs){
-            return response()->json("Error Saving", 500);
-        } else{
-            return response()->json($blogs, 201);
-        }
-        return redirect('/blogUMKM')->with(['success' => 'Content uploaded successfully']);
+        return redirect('/blogAdmin')->with(['success' => 'Content uploaded successfully']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = array(
+            'id' => "blogs",
+            'blogs' => Blogs::find($id)
+        );
+        return view('admins.blog')->with($data);
+
+        
+    }
+
+    public function destroy($id)
+    {
+        $blogs = Blogs::find($id);
+        $destination = 'storage/blogsAdmin/'.$blogs->imagePath;
+        File::delete($destination);
+        $blogs->delete();
+        return redirect('/blogAdmin')->with(['berhasil' => 'Content deleted successfully']);
     }
 }

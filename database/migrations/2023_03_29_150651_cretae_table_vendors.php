@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->uniqe();
-            $table->enum('confirm', ['Yes', 'No']);
             $table->tinyInteger('status');
+            $table->enum('confirm', ['Yes', 'No']);
             $table->timestamps();
         });
     }

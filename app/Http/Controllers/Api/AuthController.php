@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Vendor;
@@ -35,16 +34,10 @@ class AuthController extends Controller
         $user->save();
 
         DB::commit();
-        $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
-        return response($response, 201);
-        return view('auth.login')->with(['regist' => 'You have successfully created an account! Please Login!']);
         
-        
+        return response()->json([
+            'message' => 'Successfully created user'
+        ]);
     }
 
     public function login(Request $request) {
@@ -71,7 +64,6 @@ class AuthController extends Controller
         ];
 
         return response($response, 201);
-        return view('auth.register');
         
     }
 

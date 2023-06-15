@@ -1,23 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Dashboard;
 use App\Models\Product;
 use Illuminate\Support\Facades\File;
 use Image;
 use Auth;
 
-use Illuminate\Http\Request;
-
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     public function index()
     {
-        $id = Auth::user()->vendorId;
-        $product = Product::where('vendorId', $id)->get();
-        return response()->json($product, 200);
+        $id = auth()->guard('admin')->user()->vendorId;
+        $dashboard = Dashboard::where('vendorId', $id)->get();
+        $product = Product::where('vendorId', $id)->paginate(12);
+        $no = 1;
+        return view('pemilikUMKM.product', compact('product','dashboard'), compact('no'));
+        
+    }
+
+    public function create()
+    {
+        $product = Product::all();
+        return view('form-input.form-product', ['products' => $product]);
     }
 
     public function store(Request $request)
@@ -40,7 +47,7 @@ class ProductController extends Controller
         ],$messages);
 
         $products = new Product;
-        $products->vendorId = Auth::user()->vendorId;
+        $products->vendorId = Auth::guard('admin')->user()->vendorId;
         $products->productName = $request->input('productName');
         $products->productPrice = $request->input('productPrice');
         $products->description = $request->input('description');
@@ -58,11 +65,7 @@ class ProductController extends Controller
         } 
 
         $products->save();
-        if (!$products){
-            return response()->json("Error Saving", 500);
-        } else{
-            return response()->json($products, 201);
-        }
+        return redirect('/product')->with(['success' => 'Product uploaded successfully!']);
     }
 
     public function show($id)
@@ -77,13 +80,10 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::find($id);
+        $image = Product::findOrFail($id);
         $destination = 'storage/product/'.$product->imagePath;
         File::delete($destination);
         $product->delete();
-        if(!$product){
-            return response()->json("Error deleting", 500);
-        }else{
-            return response()->json("Product removed successfully!", 200);
-        }
+        return redirect('/product')->with(['berhasil' => 'Product removed successfully!']);
     }
 }

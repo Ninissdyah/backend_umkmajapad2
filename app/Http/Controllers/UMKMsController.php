@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Blogs;
 use Image;
 use Auth;
-use Illuminate\Http\Request;
 
-class UMKMController extends Controller
+class UMKMsController extends Controller
 {
     public function createBlog(Request $request)
     {
@@ -52,11 +51,6 @@ class UMKMController extends Controller
         } 
 
         $blogs->save();
-        if (!$blogs){
-            return response()->json("Error Saving", 500);
-        } else{
-            return response()->json($blogs, 201);
-        }
         return redirect('/blogUMKM')->with(['success' => 'Content uploaded successfully']);
     }
 }

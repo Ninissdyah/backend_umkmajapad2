@@ -24,7 +24,7 @@
                     @if((Auth::guard('admin')->user()->vendorId)==0)
                     <li><a class="dropdown-item" href="{{ url('/dashboardAdmin') }}">Dashboard</a></li>
                     @else
-                    <li><a class="dropdown-item" href="{{ url('/dashboardUMKM') }}">Dashboard</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/dashboard') }}">Dashboard</a></li>
                     @endif
                     <li><a class="dropdown-item" href="{{ url('/logout') }}">Logout</a></li>
                 </ul>

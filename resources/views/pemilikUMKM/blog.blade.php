@@ -26,7 +26,7 @@
     @endif
 
     <div class="button-content big">
-        <!-- <a href="/blogUMKM/create"><i class='bx bx-plus-circle'></i></a> -->
+        <a href="/blogUMKM/create"><i class='bx bx-plus-circle'></i></a>
     </div>
 </section>
 @endsection

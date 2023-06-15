@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Dashboard;
 
-class SideBarController extends Controller
+class SideBarsController extends Controller
 {
     public function index()
     {

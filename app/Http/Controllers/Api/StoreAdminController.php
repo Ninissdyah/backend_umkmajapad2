@@ -4,12 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dashboard;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use App\Models\User;
-use App\Models\Vendor;
-use App\Models\Admin;
-use Illuminate\Http\Request;
 
 class StoreAdminController extends Controller
 {

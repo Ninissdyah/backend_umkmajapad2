@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
     
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
 use App\Models\Blogs;
 use Image;
 use Auth;
@@ -17,13 +16,6 @@ class BlogAdminController extends Controller
     {
         $blogs = Blogs::all();
         return response()->json($blogs, 200);
-        return view('admins.blog', compact('blogs'));
-    }
-
-    public function create()
-    {
-        $blogs = Blogs::all();
-        return view('admins.form-blog', ['blogs' => $blogs]);
     }
 
     public function store(Request $request)
@@ -50,9 +42,8 @@ class BlogAdminController extends Controller
 
         $blogs = new Blogs;
         
-        $blogs->vendorId = Auth::guard('admin')->user()->vendorId;
-
-
+        // $blogs->vendorId = Auth::guard('admin')->user()->vendorId;
+        $blogs->vendorId = Auth::user()->vendorId;
         $blogs->contentTitle = $request->input('contentTitle');
         $blogs->content = $request->input('content');
         $blogs->author = $request->input('author');
@@ -76,7 +67,6 @@ class BlogAdminController extends Controller
         } else{
             return response()->json($blogs, 201);
         }
-        return redirect('/blogAdmin')->with(['success' => 'Content uploaded successfully']);
     }
 
     /**
@@ -111,6 +101,5 @@ class BlogAdminController extends Controller
         }else{
             return response()->json("Delete Success", 200);
         }
-        return redirect('/blogAdmin')->with(['berhasil' => 'Content deleted successfully']);
     }
 }

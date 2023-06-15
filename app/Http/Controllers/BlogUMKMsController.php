@@ -1,16 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Api;
-
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\Blogs;
+use App\Models\Dashboard;
 use Image;
 use Auth;
-use Illuminate\Http\Request;
-
-class UMKMController extends Controller
+use Illuminate\Support\Facades\File;
+class BlogUMKMsController extends Controller
 {
-    public function createBlog(Request $request)
+    public function index()
+    {
+        $id = auth()->guard('admin')->user()->vendorId;
+        $blogs = Blogs::where('vendorId', $id)->paginate(12);
+        $dashboard = Dashboard::where('vendorId', $id)->get();
+        return view('pemilikUMKM.blog', compact('blogs', 'dashboard'));
+
+    }
+
+    public function create()
+    {
+        $blogs = Blogs::all();
+        return view('form-input.form-blog', ['blogs' => $blogs]);
+    }
+
+    public function store(Request $request)
     {
         $messages = [
             'contentTitle.required'    => 'Title Content is required!',
@@ -33,6 +47,7 @@ class UMKMController extends Controller
         ],$messages);
 
         $blogs = new Blogs;
+        
         $blogs->vendorId = Auth::guard('admin')->user()->vendorId;
         $blogs->contentTitle = $request->input('contentTitle');
         $blogs->content = $request->input('content');
@@ -57,6 +72,29 @@ class UMKMController extends Controller
         } else{
             return response()->json($blogs, 201);
         }
-        return redirect('/blogUMKM')->with(['success' => 'Content uploaded successfully']);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = array(
+            'id' => "blogs",
+            'blogs' => Blogs::find($id)
+        );
+        return view('blogs.blog-details.blog-detail')->with($data);
+    }
+
+    public function destroy($id)
+    {
+        $blogs = Blogs::find($id);
+        $destination = 'storage/blogs/'.$blogs->imagePath;
+        File::delete($destination);
+        $blogs->delete();
+        return redirect('/blogUMKM')->with(['berhasil' => 'Content deleted successfully']);
     }
 }
