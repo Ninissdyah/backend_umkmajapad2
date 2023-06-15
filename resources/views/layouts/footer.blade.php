@@ -31,14 +31,14 @@
         </div>
 
         <div class="sample">
-            <h3>Send Your Message!</h3>
+            <h3>Search Here!</h3>
                 <div class="box-send">
-                    <form method="GET" action="{{route('buku.search')}}">
+                    <form method="GET" action="{{route('product.search')}}">
                         @csrf
                         <div class="form-group mt-3">
                             <input type="text" name="kata" class="form-control" placeholder="Cari...">
                         </div>
-                        <button class="btn-send btn-submit">Send</button>
+                        <button class="btn-send btn-submit">Search</button>
                     </form>
                 </div>
         </div>

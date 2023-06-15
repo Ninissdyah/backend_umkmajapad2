@@ -20,18 +20,6 @@ class HomesController extends Controller
         return view('home', compact('blogs', 'store'));
     }
 
-    public function sendMessage(Request $request) { 
-
-        $this->validate($request, [
-            'message' => 'required'
-        ]);
-
-        Mails::create($request->all());
-        
-        return redirect()->back()->with('success', 'Thank you for contact us!');
-
-    }
-
     public function search(Request $request)
     {
         $cari = $request->kata;

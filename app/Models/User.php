@@ -44,12 +44,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function user()
-    {
-       return $this->belongsTo(Dashboard::class);
-    }
-    public function users(){
-        return $this->belongsTo(Dashboard::class, 'storeName', 'id');
-    }
 }

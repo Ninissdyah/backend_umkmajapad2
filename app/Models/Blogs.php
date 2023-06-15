@@ -18,9 +18,4 @@ class Blogs extends Model
         'created_at', 
         'updated_at'
     ];
-
-    public function users()
-    {
-        return $this->belongsTo(Admin::class, 'vendorId', 'id');
-    }
 }

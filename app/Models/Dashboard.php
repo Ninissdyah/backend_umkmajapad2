@@ -22,7 +22,4 @@ class Dashboard extends Model
         'created_at', 
         'updated_at'
     ];
-    public function albums(){
-        return $this->belongsTo(User::class, 'id', 'id');
-    }
 }

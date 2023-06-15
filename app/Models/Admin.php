@@ -11,8 +11,4 @@ class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory;
     protected $guard = 'admin';
-
-    public function vendor(){
-        return $this->hasMany(Blogs::class, 'vendorId', 'vendorId');
-    }
 }
