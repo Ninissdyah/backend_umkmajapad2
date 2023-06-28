@@ -17,7 +17,7 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         $adminRecords = [
-            ['id'=>1, 'name'=>'Super Admin', 'type'=>'admin', 'vendorId'=>0, 'email'=>'admin@gmail.com', 
+            ['id'=>1, 'name'=>'Admin', 'type'=>'admin', 'vendorId'=>0, 'email'=>'admin@gmail.com', 
             'password'=>'$2a$12$fVmO/fG5auHsP6VYr1EZ1eCz3raGfb.A2RhzIWEBeBBqERbT/xFNO', 'status'=>1, 'confirm'=>'No'],
 
             //food

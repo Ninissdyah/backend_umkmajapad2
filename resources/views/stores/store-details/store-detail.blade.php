@@ -40,11 +40,10 @@
                     <a class="example-image-link" href="{{ asset ('storage/product/'.$products->imagePath) }}"
                         data-lightbox="example-2" data-title="{{$products->description}}">
                             <img class="image example-image img-fluid mb-2"
-                            src="{{ asset ('storage/product/'.$products->imagePath) }}" alt="image-1"></a> 
+                            src="{{ asset ('storage/product/'.$products->imagePath) }}" alt="image-1"></a>
                 </div>
                 <p class="title-product">{{$products->productName}}</p>
                 <p class="harga-product"><b>Rp {{$products->productPrice}}</b></p>
-                <p><b>{{$products->description}}</b></p>
             </div>
             @endforeach
         @else

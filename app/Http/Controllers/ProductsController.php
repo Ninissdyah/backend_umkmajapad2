@@ -15,7 +15,7 @@ class ProductsController extends Controller
     {
         $id = auth()->guard('admin')->user()->vendorId;
         $dashboard = Dashboard::where('vendorId', $id)->get();
-        $product = Product::where('vendorId', $id)->paginate(12);
+        $product = Product::where('vendorId', $id)->paginate(4);
         $no = 1;
         return view('pemilikUMKM.product', compact('product','dashboard'), compact('no'));
         

@@ -1,7 +1,17 @@
 @extends('layoutsUMKM.app')
 
 @section('content')
-<section class="home-section plus-bottom1">
+<section class="home-section plus-bottom3">
+@if ($message = Session::get('success'))
+          <div class="alert alert-success alert-block">
+              <h3 class="alertx">{{ $message }}</h3>
+          </div>
+    @endif
+    @if ($message = Session::get('berhasil'))
+          <div class="alert alert-success alert-block">
+              <h3 class="alertx">{{ $message }}</h3>
+          </div>
+    @endif
     <div class="text">BLOG</div>
     @if(!empty($blogs))
         @foreach($blogs as $blog)
@@ -24,7 +34,11 @@
     </div>
     @endforeach
     @endif
-
+    <div class="container text-center">
+        <div class="d-flex justify-content-center" >
+            {{ $blogs->links() }}
+        </div>
+    </div>
     <div class="button-content big">
         <a href="/blogUMKM/create"><i class='bx bx-plus-circle'></i></a>
     </div>

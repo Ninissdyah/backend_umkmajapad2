@@ -2,8 +2,7 @@
 
 @section('content')
 <section class="login">
-    <div class="container">
-        <div class="title-dashboard">
+<div class="title-dashboard">
             @if ($message = Session::get('regist'))
                 <div class="alert alert-success alert-block">
                     <h3 class="alertx">{{ $message }}</h3>
@@ -25,6 +24,8 @@
                 </div>
             @endif
         </div>
+    <div class="container">
+        
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card-auth">

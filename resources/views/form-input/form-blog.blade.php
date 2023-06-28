@@ -1,9 +1,9 @@
 @extends('layoutsUMKM.app')
 
 @section('content')
-<section class="home-section plus-bottom1">
+<section class="home-section plus-bottom3">
     <div class="container">
-        <div class="box-form height3">
+        <div class="box-form height4">
             <div class="text-in center">Content</div>
             <hr class="line-style">
             <div class="formsbox">

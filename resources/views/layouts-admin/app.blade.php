@@ -35,6 +35,7 @@
     <!-- Sript -->
     <script src="{{asset('js/dialog.js')}}"></script>
     <script src="{{asset('js/sidebar.js')}}"></script>
+    <script src="{{asset('js/lightbox-plus-jquery.min.js')}}"></script>
 
     <!-- footer awal -->
     @include('layouts.footer  ')

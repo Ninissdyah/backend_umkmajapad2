@@ -67,6 +67,10 @@ class StoreAdminController extends Controller
             'id' => "dashboards",
             'dashboards' => Dashboard::find($id)
         );
-        return view('stores.store-details.store-detail')->with($data);
+        if (is_null($data)){
+            return response()->json("Not Found", 404);
+        } else{
+            return response()->json($data, 200);
+        }
     }
 }

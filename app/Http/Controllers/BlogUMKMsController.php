@@ -12,7 +12,7 @@ class BlogUMKMsController extends Controller
     public function index()
     {
         $id = auth()->guard('admin')->user()->vendorId;
-        $blogs = Blogs::where('vendorId', $id)->paginate(12);
+        $blogs = Blogs::where('vendorId', $id)->paginate(3);
         $dashboard = Dashboard::where('vendorId', $id)->get();
         return view('pemilikUMKM.blog', compact('blogs', 'dashboard'));
 
@@ -67,11 +67,7 @@ class BlogUMKMsController extends Controller
         } 
 
         $blogs->save();
-        if (!$blogs){
-            return response()->json("Error Saving", 500);
-        } else{
-            return response()->json($blogs, 201);
-        }
+        return redirect('/blogUMKM')->with(['success' => 'Content uploaded successfully']);
     }
 
     /**

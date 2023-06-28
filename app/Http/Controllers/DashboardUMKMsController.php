@@ -150,10 +150,6 @@ class DashboardUMKMsController extends Controller
         } 
 
         $dashboard->update();
-        if (!$dashboard){
-            return response()->json("Error Saving", 500);
-        } else{
-            return response()->json($dashboard, 201);
-        }
+        return redirect('/myStore')->with(['success' => 'Store Detail updated successfully!']);
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="home-section plus-bottom1">
+<section class="home-section plus-bottom3">
     <div class="text">DASHBOARD</div>
     <div class="grid-dash">
         <div class="grid grid-profile">

@@ -17,62 +17,62 @@ class BlogsController extends Controller
     //Memanggil halaman blog kategori food&drink
     public function index()
     {
-        $blogs = Blogs::where('category', 'Food&Drink')->paginate(9);
+        $blogs = Blogs::where('category', 'Food&Drink')->paginate(3);
         return view('blogs.blog-food', compact('blogs'));
     }
 
     public function food()
     {
-        $blogs = Blogs::where('category', 'Food&Drink')->paginate(9);
+        $blogs = Blogs::where('category', 'Food&Drink')->paginate(3);
         return view('blogs.blog-food2', compact('blogs'));
     }
 
     //Memanggil halaman blog kategori art
     public function art()
     {
-        $blogs = Blogs::where('category', 'Art')->paginate(9);
+        $blogs = Blogs::where('category', 'Art')->paginate(3);
         return view('blogs.blog-art', compact('blogs'));
     }
 
     //Memanggil halaman blog kategori bazar
     public function bazar()
     {
-        $blogs = Blogs::where('category', 'Bazar')->paginate(9);
+        $blogs = Blogs::where('category', 'Bazar')->paginate(3);
         return view('blogs.blog-bazar', compact('blogs'));
     }
 
     //Memanggil halaman blog kategori beauty&health
     public function beauty()
     {
-        $blogs = Blogs::where('category', 'Beauty&Health')->paginate(9);
+        $blogs = Blogs::where('category', 'Beauty&Health')->paginate(3);
         return view('blogs.blog-beauty', compact('blogs'));
     }
 
     //Memanggil halaman blog kategori clothes
     public function clothes()
     {
-        $blogs = Blogs::where('category', 'Clothes')->paginate(9);
+        $blogs = Blogs::where('category', 'Clothes')->paginate(3);
         return view('blogs.blog-clothes', compact('blogs'));
     }
 
     //Memanggil halaman blog kategori electronic
     public function electronic()
     {
-        $blogs = Blogs::where('category', 'Electronic')->paginate(9);
+        $blogs = Blogs::where('category', 'Electronic')->paginate(3);
         return view('blogs.blog-electronic', compact('blogs'));
     }
 
     //Memanggil halaman blog kategori furniture
     public function furniture()
     {
-        $blogs = Blogs::where('category', 'Furniture')->paginate(9);
+        $blogs = Blogs::where('category', 'Furniture')->paginate(3);
         return view('blogs.blog-furniture', compact('blogs'));
     }
 
     //Memanggil halaman blog kategori webinar
     public function webinar()
     {
-        $blogs = Blogs::where('category', 'Webinar')->paginate(9);
+        $blogs = Blogs::where('category', 'Webinar')->paginate(3);
         return view('blogs.blog-webinar', compact('blogs'));
     }
 

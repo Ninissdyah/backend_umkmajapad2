@@ -1,7 +1,12 @@
 @extends('layouts-admin.app')
 
 @section('content')
-<section class="home-section plus-bottom1">
+<section class="home-section plus-bottom3">
+@if ($message = Session::get('berhasil'))
+          <div class="alert alert-success alert-block">
+              <h3 class="alertx">{{ $message }}</h3>
+          </div>
+    @endif
     <div class="coloumn-detail">
     <div class="text storez">STORE</div>
         <div class="form-group form-group2">
@@ -29,6 +34,7 @@
         </div>
     </div>
     <div>
+    @if(count($data)>0)
         <table>
             <tr>
                 <th class="no">No</th>
@@ -36,11 +42,9 @@
                 <th>Latest Activity</th>
                 <th class="action">Action</th>
             </tr>
-            
-            @if(count($data)>0)
                 @foreach ($data as $store)
             <tr>
-                <td class="no">1</td>
+                <td class="no">{{$loop->iteration}}</td>
                 <td>{{$store->storeName}}</td>
                 <td>{{$store->last_login_at}}</td>
                 <td class="action">
@@ -58,19 +62,19 @@
             </tr>
             @endforeach
             @else
-            <tr>
-                <td class="no">1</td>
-                <td>Store Name</td>
-                <td>22-02-2023</td>
-                <td class="action">
-                    <div class="action-flex">
-                        <a href="#"><i class='bx bx-trash'></i></a>
-                        <a href="#"><i class='bx bx-right-arrow-circle'></i></a>
-                    </div>
-                </td>
-            </tr>
+            <div class="store-box3 widht-full">
+                <div class="alert alert-block">
+                    <h3>Store not available yet</h3>
+                </div>
+            </div>
             @endif
         </table>
+    </div>
+    <br>
+    <div class="container text-center">
+        <div class="d-flex justify-content-center" >
+            {{ $data->links() }}
+        </div>
     </div>
 </section>
 @endsection

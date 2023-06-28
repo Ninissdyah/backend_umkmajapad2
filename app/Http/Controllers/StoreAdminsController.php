@@ -14,7 +14,8 @@ class StoreAdminsController extends Controller
     public function index()
     {
         $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.store', compact('data'));
     }
 
@@ -23,7 +24,8 @@ class StoreAdminsController extends Controller
     {
         $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
         ->where('category', 'Food&Drink')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.food', compact('data'));
     }
 
@@ -32,7 +34,8 @@ class StoreAdminsController extends Controller
     {
         $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
         ->where('category', 'Art')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.art', compact('data'));
     }
 
@@ -41,7 +44,8 @@ class StoreAdminsController extends Controller
     {
         $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
         ->where('category', 'Beauty&Health')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.beauty&health', compact('data'));
     }
 
@@ -50,7 +54,8 @@ class StoreAdminsController extends Controller
     {
         $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
         ->where('category', 'Clothes')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.clothes', compact('data'));
     }
 
@@ -59,7 +64,8 @@ class StoreAdminsController extends Controller
     {
         $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
         ->where('category', 'Electronic')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.electronic', compact('data'));
     }
 
@@ -68,7 +74,8 @@ class StoreAdminsController extends Controller
     {
         $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
         ->where('category', 'Furniture')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.furniture', compact('data'));
     }
 
@@ -77,7 +84,8 @@ class StoreAdminsController extends Controller
     {
          $data = Dashboard::join('users', 'dashboards.vendorId', '=', 'users.vendorId')
         ->where('category', 'Other')
-        ->get(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at']);
+        ->select(['dashboards.vendorId', 'dashboards.storeName', 'dashboards.category', 'dashboards.id', 'users.last_login_at'])
+        ->paginate(5);
         return view('admins.store.other', compact('data'));
     }
 
@@ -88,6 +96,6 @@ class StoreAdminsController extends Controller
         $store = Dashboard::where('vendorId', $id)->delete();
         $blogs = Blogs::where('vendorId', $id)->delete();
         $vendor = Vendor::where('id', $id)->delete();
-        return redirect('/storeAdmin');
+        return redirect('/storeAdmin')->with(['berhasil' => 'Store removed successfully!']);
     }
 }

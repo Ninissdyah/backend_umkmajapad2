@@ -75,7 +75,7 @@ class StoresController extends Controller
         );
         $dashboard = Dashboard::find($id)->toArray();
         $vendorId = $dashboard['vendorId'];
-        $product = Product::where('vendorId', $vendorId)->paginate(8);
+        $product = Product::where('vendorId', $vendorId)->paginate(4);
         return view('stores.store-details.store-detail', compact('product'))->with($data);
     }
 }
